@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-addons-test-utils';
 
-const buttonDriverFactory = ({element, wrapper, component}) => {
+const textLinkDriverFactory = ({element, wrapper, component}) => {
 
   return {
     exists: () => !!element,
@@ -10,7 +10,7 @@ const buttonDriverFactory = ({element, wrapper, component}) => {
     doesComponentHasClass: className => element.className.indexOf(className) > 0,
     isDarkBackground: () => element.style._values.color === 'rgb(255, 255, 255)',
     hover: () => ReactTestUtils.Simulate.mouseEnter(element),
-    getLink: () => element.href,
+    getLink: () => element.children[0].href,
     isUnderline: () => element.style._values['text-decoration'] === 'underline',
     isLightBackground: () => element.style._values.color === 'rgb(56, 153, 236)',
     getSize: () => element.classList.contains('t1_3') ? 'medium' : element.classList.contains('t3_3') ? 'small' : 'unknown',
@@ -21,4 +21,4 @@ const buttonDriverFactory = ({element, wrapper, component}) => {
   };
 };
 
-export default buttonDriverFactory;
+export default textLinkDriverFactory;

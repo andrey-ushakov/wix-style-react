@@ -48,6 +48,9 @@ export const buttonTestkitFactory = enzymeTestkitFactoryCreator(buttonDriverFact
 import textLinkDriverFactory from '../src/TextLink/TextLink.driver';
 export const textLinkTestkitFactory = enzymeTestkitFactoryCreator(textLinkDriverFactory);
 
+import textLinkLayoutDriverFactory from '../src/TextLinkLayout/TextLinkLayout.driver';
+export const textLinkLayoutTestkitFactory = enzymeTestkitFactoryCreator(textLinkLayoutDriverFactory);
+
 import dataTableDriverFactory from '../src/DataTable/DataTable.driver';
 export const dataTableTestkitFactory = enzymeTestkitFactoryCreator(dataTableDriverFactory);
 
@@ -86,5 +89,17 @@ export const messageBoxFunctionalLayoutTestkitFactory = enzymeTestkitFactoryCrea
 
 import messageBoxMarketerialLayoutDriverFactory from '../src/MessageBox/MessageBoxMarketerialLayout.driver';
 export const messageBoxMarketerialLayoutTestkitFactory = enzymeTestkitFactoryCreator(messageBoxMarketerialLayoutDriverFactory);
+
+import buttonHeaderDriverFactory from '../src/Card/ButtonHeader/ButtonHeader.driver';
+export const buttonHeaderTestkitFactory = enzymeTestkitFactoryCreator(buttonHeaderDriverFactory);
+
+import linkHeaderDriverFactory from '../src/Card/LinkHeader/LinkHeader.driver';
+export const linkHeaderTestkitFactory = enzymeTestkitFactoryCreator(linkHeaderDriverFactory);
+
+import headerDriverFactory from '../src/Card/Header/Header.driver';
+export const headerTestkitFactory = enzymeTestkitFactoryCreator(headerDriverFactory);
+
+import richTextAreaCompositeDriverFactory from '../src/RichTextAreaComposite/RichTextAreaComposite.driver';
+export const richTextAreaCompositeTestkitFactory = enzymeTestkitFactoryCreator(richTextAreaCompositeDriverFactory);
 
 export {toastTestkitFactory} from '../src/Toast/testkit/Toast.enzyme';
