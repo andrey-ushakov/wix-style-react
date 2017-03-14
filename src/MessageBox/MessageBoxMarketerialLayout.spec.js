@@ -4,24 +4,11 @@ import MessageBoxMarketerialLayoutFactory from './MessageBoxMarketerialLayout.dr
 import {createDriverFactory} from '../test-common';
 import sinon from 'sinon';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
-import {messageBoxMarketeriallLayoutTestkitFactory} from '../../testkit';
+import {messageBoxMarketerialLayoutTestkitFactory} from '../../testkit';
 import {messageBoxMarketerialLayoutTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
-
-/**
- * title={<span>Looking Good! <br/> Your Site Is On Google</span>}
-  content="All of your pages are indexed and now come up as separate search results on Google. This is great for your visbility!"
-  primaryButtonLabel="Got It"
-  secondaryButtonLabel="Preview on Google"
-  onSecondaryButtonClick={log('secondary button click')}
-  onPrimaryButtonClick={log('primary button click')}
-  onClose={close}
-  theme="blue"
-  imageUrl="http://www.domstechblog.com/wp-content/uploads/2015/09/wix.png"
- */
 
 describe('MessageBoxMarketerialLayout', () => {
   const createDriver = createDriverFactory(MessageBoxMarketerialLayoutFactory);
-  
   describe('action buttons', () => {
     it('should display the primary button label text on top the primary button', () => {
       const props = {
@@ -31,7 +18,7 @@ describe('MessageBoxMarketerialLayout', () => {
       expect(driver.getPrimaryButtonText()).toBe(props.primaryButtonLabel);
     });
 
-    it('should not display the primary button if primary button label was nbot passed', () => {
+    it('should not display the primary button if primary button label was not passed', () => {
       const props = {
       };
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
@@ -46,7 +33,7 @@ describe('MessageBoxMarketerialLayout', () => {
       expect(driver.getSecondaryButtonText()).toBe(props.secondaryButtonLabel);
     });
 
-    it('should not display the secondary button if secondary button label was nbot passed', () => {
+    it('should not display the secondary button if secondary button label was not passed', () => {
       const props = {
       };
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
@@ -78,15 +65,40 @@ describe('MessageBoxMarketerialLayout', () => {
         onClose: sinon.spy()
       };
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
-      driver.onClose();
+      driver.closeMessageBox();
       expect(props.onClose.calledOnce).toBeTruthy();
-      expect(driver.isMessageClosed()).toBeTruthy();
+    });
+  });
+
+  describe('general', () => {
+    it(`should render title`, () => {
+      const props = {
+        title: 'title'
+      };
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getTitle()).toBe(props.title);
+    });
+
+    it(`should render the passed content in the markup`, () => {
+      const props = {
+        content: <div data-hook="inner-div"/>
+      };
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getContentBySelector('[data-hook="inner-div"]')).not.toBeNull();
+    });
+
+    it(`should render image from given imageUrl`, () => {
+      const props = {
+        imageUrl: 'http://www.domstechblog.com/wp-content/uploads/2015/09/wix.png'
+      };
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      expect(driver.getImageSrc()).toBe(props.imageUrl);
     });
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<MessageBoxMarketerialLayout/>, messageBoxMarketeriallLayoutTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<MessageBoxMarketerialLayout/>, messageBoxMarketerialLayoutTestkitFactory)).toBe(true);
     });
   });
 
@@ -95,6 +107,4 @@ describe('MessageBoxMarketerialLayout', () => {
       expect(isEnzymeTestkitExists(<MessageBoxMarketerialLayout/>, enzymeMessageBoxTestkitFactory)).toBe(true);
     });
   });
-
-
 });
