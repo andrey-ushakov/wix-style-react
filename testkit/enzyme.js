@@ -102,4 +102,7 @@ export const headerTestkitFactory = enzymeTestkitFactoryCreator(headerDriverFact
 import richTextAreaCompositeDriverFactory from '../src/RichTextAreaComposite/RichTextAreaComposite.driver';
 export const richTextAreaCompositeTestkitFactory = enzymeTestkitFactoryCreator(richTextAreaCompositeDriverFactory);
 
+import modalDriverFactory from '../src/Modal/Modal.driver';
+export const modalTestkitFactory = enzymeTestkitFactoryCreator(modalDriverFactory);
+
 export {toastTestkitFactory} from '../src/Toast/testkit/Toast.enzyme';

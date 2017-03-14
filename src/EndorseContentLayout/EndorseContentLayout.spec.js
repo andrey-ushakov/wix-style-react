@@ -1,25 +1,6 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 
-import EndorseContentLayout from './';
-import styles from './styles.scss';
-
-class Driver {
-  component;
-  when = {
-    created: props => this.component = shallow(<EndorseContentLayout {...props}/>)
-  }
-
-  get = {
-    root: () => this.component.find(`.${styles.root}`),
-    head: () => this.component.find(`.${styles.head}`),
-    content: () => this.component.find(`.${styles.content}`),
-    primaryCta: () => this.component.find(`.${styles.primaryCta}`),
-    secondaryCta: () => this.component.find(`.${styles.secondaryCta}`)
-  }
-}
-
-const driver = new Driver();
+import driver from './EndorseContentLayout.driver';
 
 describe('EndorseContentLayout', () => {
   it('should render', () => {

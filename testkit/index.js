@@ -102,4 +102,7 @@ export const messageBoxFunctionalLayoutTestkitFactory = testkitFactoryCreator(me
 import messageBoxMarketerialLayoutDriverFactory from '../src/MessageBox/MessageBoxMarketerialLayout.driver';
 export const messageBoxMarketerialLayoutTestkitFactory = testkitFactoryCreator(messageBoxMarketerialLayoutDriverFactory);
 
+import modalDriverFactory from '../src/Modal/Modal.driver';
+export const modalTestkitFactory = testkitFactoryCreator(modalDriverFactory);
+
 export {toastTestkitFactory} from '../src/Toast/testkit/Toast';
