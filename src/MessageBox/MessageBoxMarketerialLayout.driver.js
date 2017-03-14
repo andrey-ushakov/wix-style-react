@@ -16,7 +16,9 @@ const messageBoxMarketerialLayoutDriverFactory = ({element, wrapper, component})
     clickOnPrimaryButton: () => ReactTestUtils.Simulate.click(primaryButton()),
     clickOnSecondaryButton: () => ReactTestUtils.Simulate.click(secondaryButton()),
     closeMessageBox: () => ReactTestUtils.Simulate.click(closeButton()),
-    isThemeExist: theme => !!element.querySelector(`.${theme}`),
+    getTitle: () => element.querySelector('[data-hook="message-box-title"]').textContent,
+    getContentBySelector: selector => element.querySelector(selector),
+    getImageSrc: () => element.querySelector('[data-hook="header-image"]').src,
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
