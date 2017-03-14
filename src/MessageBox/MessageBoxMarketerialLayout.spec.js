@@ -76,6 +76,7 @@ describe('MessageBoxMarketerialLayout', () => {
         title: 'title'
       };
       const driver = createDriver(<MessageBoxMarketerialLayout {...props}/>);
+      console.log(driver.getTitle.toString());
       expect(driver.getTitle()).toBe(props.title);
     });
 

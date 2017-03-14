@@ -14,14 +14,14 @@ class MessageBoxMarketerialLayout extends WixComponent {
     return (
       <div className={styles.root}>
         <div className={styles.header}>
-          <button className={styles.close} onClick={onClose}>
+          <button className={styles.close} onClick={onClose} data-hook="close-button">
             <SvgX width={9} height={9} thickness={1} color={'white'}/>
           </button>
           <div className={styles.headerImage}>
-            <img src={imageUrl}/>
+            <img src={imageUrl} data-hook="header-image"/>
           </div>
         </div>
-        <div className={styles.title}>
+        <div className={styles.title} data-hook="message-box-title">
           {title}
         </div>
         <div className={styles.content}>
