@@ -8,7 +8,12 @@ export {default as InputWithOptions} from './InputWithOptions';
 export {default as Checkbox} from './Checkbox';
 export {default as ToggleSwitch} from './ToggleSwitch';
 export {default as Modal} from './Modal';
-export {MessageBoxMarketerialLayout, MessageBoxFunctionalLayout, MessageBoxFunctionalLayout as MessageBoxLayout2, HeaderLayout, FooterLayout};
+export {
+    MessageBoxMarketerialLayout, MessageBoxMarketerialLayout as MessageBoxLayout1,
+    MessageBoxFunctionalLayout, MessageBoxFunctionalLayout as MessageBoxLayout2,
+    HeaderLayout, HeaderLayout as HeaderLayout1,
+    FooterLayout, FooterLayout as FooterLayout1
+};
 export {default as RadioGroup} from './RadioGroup';
 export {default as Slider} from './Slider';
 export {default as GoogleAddressInput} from './GoogleAddressInput';
