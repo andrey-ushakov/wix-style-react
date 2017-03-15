@@ -48,6 +48,9 @@ export const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 import textLinkDriverFactory from '../src/TextLink/TextLink.driver';
 export const textLinkTestkitFactory = testkitFactoryCreator(textLinkDriverFactory);
 
+import textLinkLayoutDriverFactory from '../src/TextLinkLayout/TextLinkLayout.driver';
+export const textLinkLayoutTestkitFactory = testkitFactoryCreator(textLinkLayoutDriverFactory);
+
 import dataTableDriverFactory from '../src/DataTable/DataTable.driver';
 export const dataTableTestkitFactory = testkitFactoryCreator(dataTableDriverFactory);
 
@@ -80,6 +83,18 @@ export const fieldWithSelectionCompositeTestkitFactory = testkitFactoryCreator(f
 
 import googleAddressWithInputDriverFactory from '../src/GoogleAddressInputWithLabel/GoogleAddressInputWithLabel.driver';
 export const googleAddressWithInputTestkitFactory = testkitFactoryCreator(googleAddressWithInputDriverFactory);
+import richTextAreaCompositeDriverFactory from '../src/RichTextAreaComposite/RichTextAreaComposite.driver';
+export const richTextAreaCompositeTestkitFactory = testkitFactoryCreator(richTextAreaCompositeDriverFactory);
+
+
+import buttonHeaderDriverFactory from '../src/Card/ButtonHeader/ButtonHeader.driver';
+export const buttonHeaderTestkitFactory = testkitFactoryCreator(buttonHeaderDriverFactory);
+
+import linkHeaderDriverFactory from '../src/Card/LinkHeader/LinkHeader.driver';
+export const linkHeaderTestkitFactory = testkitFactoryCreator(linkHeaderDriverFactory);
+
+import headerDriverFactory from '../src/Card/Header/Header.driver';
+export const headerTestkitFactory = testkitFactoryCreator(headerDriverFactory);
 
 import messageBoxFunctionalLayoutDriverFactory from '../src/MessageBox/MessageBoxFunctionalLayout.driver';
 export const messageBoxFunctionalLayoutTestkitFactory = testkitFactoryCreator(messageBoxFunctionalLayoutDriverFactory);
@@ -87,7 +102,9 @@ export const messageBoxFunctionalLayoutTestkitFactory = testkitFactoryCreator(me
 import messageBoxMarketerialLayoutDriverFactory from '../src/MessageBox/MessageBoxMarketerialLayout.driver';
 export const messageBoxMarketerialLayoutTestkitFactory = testkitFactoryCreator(messageBoxMarketerialLayoutDriverFactory);
 
+import modalDriverFactory from '../src/Modal/Modal.driver';
+export const modalTestkitFactory = testkitFactoryCreator(modalDriverFactory);
+
 import timeInputDriverFactory from '../src/TimeInput/TimeInput.driver';
 export const timeInputTestkitFactory = testkitFactoryCreator(timeInputDriverFactory);
-
 export {toastTestkitFactory} from '../src/Toast/testkit/Toast';
