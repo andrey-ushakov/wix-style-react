@@ -13,7 +13,8 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     rtl: React.PropTypes.bool,
     style: React.PropTypes.object,
-    disableAmPm: React.PropTypes.bool
+    disableAmPm: React.PropTypes.bool,
+    dataHook: React.PropTypes.string
   },
 
   getDefaultProps() {
@@ -261,7 +262,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div className={styles.wrapper} style={this.props.style}>
+      <div className={styles.wrapper} style={this.props.style} data-hook={this.props.dataHook}>
         {this.renderTime()}
       </div>
     );

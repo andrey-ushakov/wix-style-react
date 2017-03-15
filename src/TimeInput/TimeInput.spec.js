@@ -77,7 +77,7 @@ describe('TimeInput', () => {
       expect(props.onChange.calledTwice).toBeTruthy();
     });
 
-    it(`should increase input value by 20 minutes upon clicking the input's up ticker when first created`, () => {
+    it(`should increase input value by 20 minutes upon clicking the input's up ticker`, () => {
       const props = {
         defaultValue: moment()
       };
@@ -86,7 +86,7 @@ describe('TimeInput', () => {
       expect(driver.getValue()).toBe(format12Hours(props.defaultValue.add(20, 'minutes')));
     });
 
-    it(`should decrease input value by 20 minutes upon clicking the input's down ticker when first created`, () => {
+    it(`should decrease input value by 20 minutes upon clicking the input's down ticker`, () => {
       const props = {
         defaultValue: moment()
       };
@@ -142,7 +142,7 @@ describe('TimeInput', () => {
       const props = {
       };
       const driver = createDriver(<TimePicker {...props}/>);
-      expect(driver.haveRtlStyle()).toBeFalsy();
+      expect(driver.isRtl()).toBeFalsy();
     });
 
     it(`should allow to be created in rtl mode`, () => {
@@ -150,7 +150,7 @@ describe('TimeInput', () => {
         rtl: true
       };
       const driver = createDriver(<TimePicker {...props}/>);
-      expect(driver.haveRtlStyle()).toBeTruthy();
+      expect(driver.isRtl()).toBeTruthy();
     });
   });
 

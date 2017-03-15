@@ -5,6 +5,7 @@ import ReactTestUtils from 'react-addons-test-utils';
 import styles from './TimeInput.scss';
 import {testkitFactoryCreator} from '../test-common';
 import inputDriverFactory from '../Input/Input.driver';
+
 const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);
 
 const timeInputDriverFactory = ({element, wrapper, component}) => {
@@ -19,7 +20,7 @@ const timeInputDriverFactory = ({element, wrapper, component}) => {
     isAmPmIndicatorExist: () => !!amPmIndicator(),
     toggleAmPmIndicator: () => ReactTestUtils.Simulate.click(amPmIndicator()),
     getAmPmIndicatorText: () => amPmIndicator().textContent,
-    haveRtlStyle: () => !!element.querySelector(`.${styles.rtl}`),
+    isRtl: () => !!element.querySelector(`.${styles.rtl}`),
     setValue: value => input().enterText(value),
     blur: () => input().blur(),
     setProps: props => {
