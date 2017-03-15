@@ -221,6 +221,7 @@ export default React.createClass({
               <Input.Ticker onUp={this.handlePlus} onDown={this.handleMinus}/>
             </Input.Group>
           }
+          dataHook="time-input"
           />
       </div>
     );
@@ -236,7 +237,7 @@ export default React.createClass({
     }
 
     return (
-      <span className={styles.ampm} onClick={this.toggleAmPm}>
+      <span className={styles.ampm} onClick={this.toggleAmPm} data-hook="am-pm-indicator">
         {this.state.am ? getAmText() : getPmText()}
       </span>
     );

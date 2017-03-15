@@ -87,4 +87,7 @@ export const messageBoxFunctionalLayoutTestkitFactory = enzymeTestkitFactoryCrea
 import messageBoxMarketerialLayoutDriverFactory from '../src/MessageBox/MessageBoxMarketerialLayout.driver';
 export const messageBoxMarketerialLayoutTestkitFactory = enzymeTestkitFactoryCreator(messageBoxMarketerialLayoutDriverFactory);
 
+import timeInputDriverFactory from '../src/TimeInput/TimeInput.driver';
+export const timeInputTestkitFactory = enzymeTestkitFactoryCreator(timeInputDriverFactory);
+
 export {toastTestkitFactory} from '../src/Toast/testkit/Toast.enzyme';
