@@ -3,9 +3,11 @@ import Modal from './Modal';
 import ModalFactory from './Modal.driver';
 import {createDriverFactory} from '../test-common';
 import sinon from 'sinon';
+/*
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
 import {modalTestkitFactory} from '../../testkit';
 import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
+*/
 
 /**
  * Modal.propTypes = {
