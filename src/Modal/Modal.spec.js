@@ -21,7 +21,7 @@ import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testk
   - onAfterOpen: React.PropTypes.func,
   horizontalPosition: React.PropTypes.oneOf(Object.keys(positions)),
   verticalPosition: React.PropTypes.oneOf(Object.keys(positions)),
-  closeTimeoutMS: React.PropTypes.number
+  - closeTimeoutMS: React.PropTypes.number
 };
  */
 describe('Modal', () => {
@@ -82,28 +82,27 @@ describe('Modal', () => {
 
     it(`should wait closeTimeoutMS before removing the modal`, done => {
 
-      props.shouldCloseOnOverlayClick = true;
-      props.closeTimeoutMS = 500;
-      jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 1000;
+      props.closeTimeoutMS = 400;
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = props.closeTimeoutMS + 500;
 
       const driver = createDriver(<Modal {...props}/>);
-      driver.clickOnOverlay();
-
-      expect(driver.isOpen()).toBeTruthy();
+      driver.setProps({
+        isOpen: false
+      });
 
       setTimeout(() => {
         expect(driver.isOpen()).toBeTruthy();
-        done();
-      }, props.closeTimeoutMS + 100);
+      }, props.closeTimeoutMS - 50);
 
       setTimeout(() => {
         expect(driver.isOpen()).toBeFalsy();
         done();
-      }, props.closeTimeoutMS + 100);
+      }, props.closeTimeoutMS + 50);
+
     });
   });
 
-  describe('theme attribute', () => {
+  describe('theme', () => {
     it('should set the theme by default to "blue"', () => {
       const driver = createDriver(<Modal {...props}/>);
       expect(driver.isThemeExist('blue')).toBeTruthy();

@@ -65,7 +65,6 @@ class Modal extends WixComponent {
 Modal.propTypes = {
   isOpen: React.PropTypes.bool.isRequired,
   contentLabel: React.PropTypes.string.isRequired,
-  onCancel: React.PropTypes.func,
   theme: React.PropTypes.oneOf(Object.keys(colors)),
   children: React.PropTypes.any,
   zIndex: React.PropTypes.number,

@@ -6,12 +6,16 @@ const modalDriverFactory = ({element, wrapper, component}) => {
 
   const getPortal = () => document.body.querySelector('.portal');
   const getOverlay = () => document.body.querySelector('.ReactModal__Overlay');
-  console.log(getOverlay());
+  const getContent = () => document.body.querySelector('.ReactModal__Content');
 
   return {
     exists: () => !!(getPortal()) && !!element,
+    isOpen: () => {
+      console.log(getOverlay());
+      console.log(getContent());
+      return !!(getContent());
+    },
     isThemeExist: theme => !!getPortal().querySelector(`.${theme}`),
-    getTitle: () => getPortal().querySelector('[data-hook="header-layout-title"]').textContent,
     getChildBySelector: selector => getPortal().querySelector(selector),
     clickOnOverlay: () => {
       const overlay = getOverlay();
