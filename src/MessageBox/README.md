@@ -27,3 +27,19 @@
 | onCancel | func | - | - | Cancel callback |
 | title | Node | - | - | title of the Message Box |
 | children | array | - | - | Message box content |
+
+## MessageBoxFunctionalLayout TestKit API
+
+| method | arguments | returned value | description |
+|--------|-----------|----------------|-------------|
+| exists | - | bool | fulfilled if element in the DOM |
+| getConfirmationButton | - | element | returns the confirmation button element |
+| getConfirmationButtonText | - | string | returns the confirmation button text |
+| getCancellationButton | - | element | returns the cancellation button element |
+| getCancellationButtonText | - | string | returns the cancellation button text |
+| clickOnCancellationButton | - | - | clicks on the cancellation button |
+| clickOnConfirmationButton | - | - | clicks on the confirmation button |
+| isThemeExist | (green, blue , red) | bool | fulfilled if theme applied |
+| getFooter | - | element | returns the footer element |
+| getTitle | - | string | returns the  title of the Message Box |
+| getChildBySelector | selector | child element | return the element inside the Message box content |

@@ -23,10 +23,15 @@ describe('TimeInput', () => {
     });
 
     it(`should render the current time if no default value were passed `, () => {
-      const props = {
-      };
-      const driver = createDriver(<TimePicker {...props}/>);
-      expect(driver.getValue()).toBe(format12Hours(moment()));
+      const driver = createDriver(<TimePicker/>);
+      const currentTime = moment();
+      const currentTimeHours = format12Hours(currentTime).substring(0, 2);
+      const currentTimeMinutes = format12Hours(currentTime).substring(3, 5);
+      const inputTimeHours = driver.getValue().substring(0, 2);
+      const inputTimeMinutes = driver.getValue().substring(3, 5);
+      const minutesDiff = Math.abs((parseInt(inputTimeMinutes) - parseInt(currentTimeMinutes)));
+      expect(inputTimeHours).toBe(currentTimeHours);
+      expect(minutesDiff <= 1).toBeTruthy(); //ignore diff of one minute (minute can be change from the time the object was created to current time)
     });
 
     it(`should allow rendering time in 24 hours mode`, () => {
