@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Tabs from '../../src/Tabs/Tabs';
 
-class ExampleTabbedView extends Component {
+class TabbedView extends Component {
   static propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.string),
     children: PropTypes.arrayOf(React.PropTypes.node)
@@ -39,4 +39,4 @@ class ExampleTabbedView extends Component {
   }
 }
 
-export default ExampleTabbedView;
+export default TabbedView;

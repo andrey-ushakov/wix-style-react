@@ -30,7 +30,7 @@
   ***************/
   
   const component = mount(<div/><MessageBoxFunctionalLayout dataHook='messageBox'/></div>);
-  enzymeMessageBoxMarketerialLayoutTestKit = enzymeMessageBoxFunctionalLayoutTestkitFactory({wrapper: this.component, dataHook: 'messageBox'})
+  enzymeMessageBoxMarketerialLayoutTestKit = enzymeMessageBoxFunctionalLayoutTestkitFactory({wrapper: component, dataHook: 'messageBox'})
   
   expect(enzymeMessageBoxMarketerialLayoutTestKit.getConfirmationButtonText()).toBe('OK');
 
