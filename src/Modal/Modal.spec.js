@@ -7,23 +7,6 @@ import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common'
 import {modalTestkitFactory} from '../../testkit';
 import {modalTestkitFactory as enzymeMessageBoxTestkitFactory} from '../../testkit/enzyme';
 
-/**
- * Modal.propTypes = {
-  - isOpen: React.PropTypes.bool.isRequired,
-  - contentLabel: React.PropTypes.string.isRequired,
-  X onCancel: React.PropTypes.func,
-  X style: React.PropTypes.oneOf(Object.keys(colors)),
-  - theme: React.PropTypes.oneOf(Object.keys(colors)),
-  - children: React.PropTypes.any,
-  zIndex: React.PropTypes.number,
-  - shouldCloseOnOverlayClick: React.PropTypes.bool,
-  - onRequestClose: React.PropTypes.func,
-  - onAfterOpen: React.PropTypes.func,
-  horizontalPosition: React.PropTypes.oneOf(Object.keys(positions)),
-  verticalPosition: React.PropTypes.oneOf(Object.keys(positions)),
-  - closeTimeoutMS: React.PropTypes.number
-};
- */
 describe('Modal', () => {
   const createDriver = createDriverFactory(ModalFactory);
 

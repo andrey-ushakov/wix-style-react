@@ -10,11 +10,7 @@ const modalDriverFactory = ({element, wrapper, component}) => {
 
   return {
     exists: () => !!(getPortal()) && !!element,
-    isOpen: () => {
-      console.log(getOverlay());
-      console.log(getContent());
-      return !!(getContent());
-    },
+    isOpen: () => !!(getContent()),
     isThemeExist: theme => !!getPortal().querySelector(`.${theme}`),
     getChildBySelector: selector => getPortal().querySelector(selector),
     clickOnOverlay: () => {
