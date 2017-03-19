@@ -41,7 +41,6 @@ describe('Modal', () => {
     it(`should not render the modal content if not open by default`, () => {
       props.isOpen = false;
 
-      console.log(props);
       const driver = createDriver(<Modal {...props}>
         <div data-hook="inner-div"/>
       </Modal>);
@@ -50,7 +49,6 @@ describe('Modal', () => {
 
     it(`should render the passed children in the markup`, () => {
       props.isOpen = true;
-      console.log(props);
       const driver = createDriver(<Modal {...props}>
         <div data-hook="inner-div"/>
       </Modal>);
@@ -62,7 +60,6 @@ describe('Modal', () => {
   describe('callbacks', () => {
     it(`should trigger the onAfterOpen function`, () => {
       props.onAfterOpen = sinon.spy();
-      console.log(props);
 
       createDriver(<Modal {...props}/>);
       expect(props.onAfterOpen.calledOnce).toBeTruthy();

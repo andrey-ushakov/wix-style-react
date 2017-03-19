@@ -4,7 +4,7 @@ import {shallow} from 'enzyme';
 import EndorseContentLayout from './';
 import styles from './styles.scss';
 
-class EndorseContentLayoutDriver {
+export default class EndorseContentLayoutDriver {
   component;
   when = {
     created: props => this.component = shallow(<EndorseContentLayout {...props}/>)
@@ -18,5 +18,3 @@ class EndorseContentLayoutDriver {
     secondaryCta: () => this.component.find(`.${styles.secondaryCta}`)
   }
 }
-
-export default EndorseContentLayoutDriver;
