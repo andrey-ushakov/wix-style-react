@@ -19,8 +19,8 @@
 > Unit Testing Example
 ```javascript
   import React from 'react';
-  import {buttonTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
-  import {buttonTestkitFactory as enzymeButtonTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
+  import {buttonTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {buttonTestkitFactory as enzymeButtonTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
@@ -68,6 +68,6 @@
   waitForVisibilityOf(testkit.element(), 'Cannot find Button')
      .then(() => {
        //Do tests
-        expect(testkit.getButtonTextContent()).toBe('Click Me!');
+        expect(testkit.element().isDisplayed()).toBeTruthy();
      });
 ```
