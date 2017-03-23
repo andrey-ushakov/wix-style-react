@@ -1,4 +1,4 @@
-# AutoComplete testkits
+# AutoComplete Testkits
 
 > Autocomplete
 
@@ -10,11 +10,13 @@
 | getDropdown | - | element | returns autocomplete dropdown element |
 | getDropdownItem | index | element | returns autocomplete specific item in dropdown |
 | getDropdownItemsCount | - | number | returns the number of suggested items in autocomplete |
-| exists | - | bool | fulfilled if element in the DOM |
-| element | - | element | returns the driver element |
 | click | - | - | clicks on the button |
+| exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
+| element (Only in E2E) | - | element | returns the driver element |
 
 ## Usage Example
+
+> Unit testing example
 
 ```javascript
   import React from 'react';
@@ -29,6 +31,7 @@
   const wrapper = mount(<div/><AutoComplete dataHook={dataHook}/></div>);
   const testkit = enzymeAutoCompleteTestkitFactory({wrapper, dataHook});
 
+  //Do tests
   expect(testkit.driver.exists()).toBeTruthy();
 
   /**********************
@@ -42,7 +45,14 @@
   );
   const testkit = autoCompleteTestkitFactory({wrapper, dataHook});
 
+  //Do tests
   expect(testkit.driver.exists()).toBeTruthy();
+```
+> E2E example
+
+```javascript
+  //Element should be rendered with a data-hook into the DOM
+  <AutoComplete dataHook='myDataHook'/>
 
   /*******************
    protractor example
@@ -50,19 +60,18 @@
 
   import {autoCompleteTestkitFactory, waitForVisibilityOf} from 'wix-style-react/dist/testkit/protractor';
 
-  //The autocomplete element for the following test should look like:
-  //<AutoComplete dataHook='myDataHook'/>
+  //Create an element testkit via the data-hook attribute
+  const testkit = autoCompleteTestkitFactory({dataHook: 'myDataHook'});
 
-  const driver = autoCompleteTestkitFactory({dataHook: 'myDataHook'});
+  browser.get(appUrl); //Your application url
 
-  browser.get(appUrl); //application url
-
-  waitForVisibilityOf(driver.element(), 'Cannot find AutoComplete')
+  waitForVisibilityOf(testkit.element(), 'Cannot find AutoComplete')
      .then(() => {
-        driver.click();
-        driver.getDropdownItem(0).click();
+        //Do tests
+        testkit.click();
+        testkit.getDropdownItem(0).click();
 
-        expect(driver.getInput().getAttribute('value')).toBe('First option');
+        expect(testkit.getInput().getAttribute('value')).toBe('First option');
      });
 
 ```
