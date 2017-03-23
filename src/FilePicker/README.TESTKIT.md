@@ -9,7 +9,9 @@
 | getInput | - | element | returns FilePicker input element |
 | getSubLabel | - | string | returns FilePicker subLabel text |
 | getMainLabel | - | string | returns FilePicker mainLabel text |
-| click | - | - | clicks on the button |
+| hasError | - | bool | fulfilled if element has an error |
+| errorMessage | - | string | returns FilePicker error message text |
+| click | - | - | clicks on the FilePicker |
 | exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
 | element (Only in E2E) | - | element | returns the driver element |
 
@@ -19,8 +21,8 @@
 
 ```javascript
   import React from 'react';
-  import {filePickerTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
-  import {filePickerTestkitFactory as enzymeFilePickerTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
+  import {filePickerTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {filePickerTestkitFactory as enzymeFilePickerTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
@@ -67,13 +69,7 @@
   waitForVisibilityOf(testkit.element(), 'Cannot find FilePicker')
      .then(() => {
         //Do tests
-        const imagePath = 'wix-style-react/test/assets/surf-musa.png';
-        const absolutePath = path.resolve(__dirname, imagePath);
-
-        expect(testkit.getSubLabel()).toBe('No file chosen (Max size 5 MB)');
-
-        driver.getInput().sendKeys(absolutePath);
-        expect(testkit.getSubLabel()).toBe('surf-musa.png');
+        expect(testkit.element().isDisplayed()).toBeTruthy();
      });
 
 ```

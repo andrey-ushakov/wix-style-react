@@ -10,7 +10,7 @@
 | getDropdown | - | element | returns autocomplete dropdown element |
 | getDropdownItem | index | element | returns autocomplete specific item in dropdown |
 | getDropdownItemsCount | - | number | returns the number of suggested items in autocomplete |
-| click | - | - | clicks on the button |
+| click | - | - | clicks on the autocomplete |
 | exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
 | element (Only in E2E) | - | element | returns the driver element |
 
@@ -20,8 +20,8 @@
 
 ```javascript
   import React from 'react';
-  import {autoCompleteTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
-  import {autoCompleteTestkitFactory as enzymeAutoCompleteTestkitFactory} from 'wix-style-react/dist/testkit/protractor';
+  import {autoCompleteTestkitFactory} from 'wix-style-react/dist/testkit';
+  import {autoCompleteTestkitFactory as enzymeAutoCompleteTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
 
   /***************
    enzyme example
@@ -68,10 +68,7 @@
   waitForVisibilityOf(testkit.element(), 'Cannot find AutoComplete')
      .then(() => {
         //Do tests
-        testkit.click();
-        testkit.getDropdownItem(0).click();
-
-        expect(testkit.getInput().getAttribute('value')).toBe('First option');
+        expect(testkit.element().isDisplayed()).toBeTruthy();
      });
 
 ```
