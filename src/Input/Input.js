@@ -72,7 +72,8 @@ class Input extends Component {
       [styles.hasError]: !!error,
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
-      [styles.roundInput]: roundInput
+      [styles.roundInput]: roundInput,
+      [styles.hasValue]: this.input && !!this.input.value
     };
 
     if (noRightBorderRadius) {
@@ -100,14 +101,14 @@ class Input extends Component {
     const suffixes = [
       {
         component: () =>
-          <Tooltip disabled={errorMessage.length === 0} placement="top" moveBy={{x: 2, y: 0}} alignment="center" content={errorMessage} overlay="" theme="dark">
+          <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0} placement="top" moveBy={{x: 2, y: 0}} alignment="center" content={errorMessage} overlay="" theme="dark">
             <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>
           </Tooltip>,
         isVisible: error && !disabled
       },
       {
         component: () =>
-          <Tooltip disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
+          <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
             <div className={styles.help}><Help height="20" width="20"/></div>
           </Tooltip>,
         isVisible: help && !disabled

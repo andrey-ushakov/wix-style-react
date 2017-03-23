@@ -98,29 +98,34 @@ $double-gap: 12px;
     }
     &-amaterial {
         border: 0;
+        &.size-normal {
+            padding-bottom: 4px;
+            @include Size($height: 34px, $fontSize: 20px);
+        }
+        .input {
+            @include FontLight();
+        }
         label,
         input {
-            font-size: 24px;
             z-index: 100;
+            color: #162d3d;
         }
 
         label {
+            font-size: 20px;
             transition:all .2s ease-in-out;
             position: absolute;
-            top: 7px;
+            top: 5px;
             padding: 0 12px;
         }
 
         input {
             transition: border-bottom .3s, border-color .3s, border-width .3s, border .3s ease-in-out;
             line-height: 1;
-            order: 2;
             display: block;
             margin-top: 0;
 
             background: none;
-            border-width: 0 0 1px;
-            -ms-flex-preferred-size: 26px; //IE fix
             border-radius: 0;
             border-style: solid; // Firefox fix
 
@@ -129,7 +134,8 @@ $double-gap: 12px;
             box-sizing: border-box;
         }
 
-        &.hasFocus {
+        &.hasFocus,
+        &.hasValue {
             input {
                 border-bottom: 0;
             }
@@ -140,8 +146,8 @@ $double-gap: 12px;
                 }
             }
             label {
-                top: -20px;
-                font-size: 16px;
+                top: -22px;
+                font-size: 14px;
             }
         }
     }
