@@ -4,9 +4,9 @@
 
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
-| breadcrumbContentAt | position | func | return the breadcrumb item content at position |
-| clickBreadcrumbAt | position | func | click on breadcrumb item at position |
-| getActiveItemId | position | func | return the active breadcrumb item position |
+| breadcrumbContentAt | position | string | return the breadcrumb item content at position |
+| clickBreadcrumbAt | position | string | click on breadcrumb item at position |
+| getActiveItemId | position | string | return the active breadcrumb item position |
 | getLabelClassList | - | arrayOf(string) | returns breadcrumbs component classes |
 | isLarge | - | bool | fulfilled if breadcrumbs component is large |
 | isMedium | - | bool | fulfilled if breadcrumbs component is medium |

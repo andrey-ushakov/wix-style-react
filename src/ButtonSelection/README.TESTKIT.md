@@ -9,7 +9,7 @@
 | getButtonsNames | - | arrayOf(string)	 | returns an array of button names |
 | getButtonsClasses | - | arrayOf(string) | returns an array of button classes |
 | getSelectedButton | - | string | returns the name of the selected button |
-| selectByValue | buttonName | func(string) | select a button by button name |
+| selectByValue | buttonName | - | select a button by button name |
 | exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
 | element (Only in E2E) | - | element | returns the driver element |
 
