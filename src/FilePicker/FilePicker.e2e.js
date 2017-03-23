@@ -15,10 +15,10 @@ describe('FilePicker', () => {
       const imagePath = '../../test/assets/surf-musa.png';
       const absolutePath = path.resolve(__dirname, imagePath);
 
-      expect(driver.getImagePlaceholder()).toBe('No file chosen (Max size 5 MB)');
+      expect(driver.getSubLabel()).toBe('No file chosen (Max size 5 MB)');
 
       driver.getInput().sendKeys(absolutePath);
-      expect(driver.getImagePlaceholder()).toBe('surf-musa.png');
+      expect(driver.getSubLabel()).toBe('surf-musa.png');
     });
   });
 });
