@@ -50,6 +50,8 @@ ButtonLayout.propTypes = {
     'emptyblue',
     'emptypurple',
     'fullblue',
+    'login',
+    'emptylogin',
     'transparentblue',
     'whiteblue',
     'whiteblueprimary',

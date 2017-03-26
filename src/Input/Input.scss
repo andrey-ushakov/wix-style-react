@@ -102,24 +102,23 @@ $double-gap: 12px;
             padding-bottom: 4px;
             @include Size($height: 34px, $fontSize: 20px);
         }
-        .input {
-            @include FontLight();
-        }
+
         label,
-        input {
-            z-index: 100;
-            color: #162d3d;
+        .input {
+            color: #43515c;
         }
 
         label {
             font-size: 20px;
             transition:all .2s ease-in-out;
             position: absolute;
-            top: 5px;
+            top: 2px;
             padding: 0 12px;
         }
 
-        input {
+        .input {
+            @include FontLight();
+            z-index: 100;
             transition: border-bottom .3s, border-color .3s, border-width .3s, border .3s ease-in-out;
             line-height: 1;
             display: block;
@@ -142,12 +141,20 @@ $double-gap: 12px;
 
             .bar {
                 &:before, &:after {
+                    height: 2px;
                     background-color: #3899ec;
                 }
             }
             label {
                 top: -22px;
                 font-size: 14px;
+            }
+        }
+
+        &.hasError {
+            .bar {
+                height: 2px;
+                background-color: #f2564d;
             }
         }
     }
