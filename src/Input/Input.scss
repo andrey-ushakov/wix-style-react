@@ -99,10 +99,10 @@ $double-gap: 12px;
     &-amaterial {
 
         .errorIcon {
-            padding: 0 8px 16px;
+            padding: 0 7px 16px;
             color: #f2564d;
         }
-        
+
         border: 0;
         &.size-normal {
             padding-bottom: 4px;
@@ -175,7 +175,7 @@ $double-gap: 12px;
                 bottom: 0;
                 position: absolute;
                 background: #000;
-                transition: 0.2s ease all;
+                transition: 0.3s all;
             }
             transition: 0.3s ease all;
         }
@@ -298,6 +298,12 @@ $double-gap: 12px;
     margin: 0 $gap;
     color: $B20;
     padding-top: 4px;
+}
+
+.amaterial-help {
+    margin: 0 $gap;
+    color: $B20;
+    padding-bottom: 14px;
 }
 
 .clear-button {

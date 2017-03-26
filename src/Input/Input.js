@@ -110,8 +110,8 @@ class Input extends Component {
 
     const helpElement = theme === 'amaterial' ?
       (
-        <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
-          <div className={styles.help}><InfoMaterial height="20" width="20"/></div>
+        <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 6, y: -10}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
+          <div className={styles.amaterialHelp}><InfoMaterial height="30" width="30"/></div>
         </Tooltip>
       ) :
       (
@@ -198,7 +198,7 @@ class Input extends Component {
     );
 
     const inputWithWrapper = theme === 'amaterial' ? (
-      <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0 || theme !== 'amaterial'} placement="left" showTrigger="custom" hideTrigger="custom" hideDelay={5} showDelay={5} active={!this.state.focus} moveBy={{x: -8, y: 0}} alignment="center" content={errorMessage} overlay="">
+      <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0 || theme !== 'amaterial'} placement="right" showTrigger="custom" hideTrigger="custom" hideDelay={5} showDelay={5} active={!this.state.focus} moveBy={{x: 45, y: -10}} alignment="center" content={errorMessage} overlay="">
         {innerInputElement}
       </Tooltip>
     ) :
