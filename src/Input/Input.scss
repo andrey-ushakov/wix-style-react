@@ -161,12 +161,6 @@ $double-gap: 12px;
             }
         }
 
-        &.hasError {
-            .bar {
-                height: 2px;
-                background-color: #f2564d;
-            }
-        }
         .bar {
             position: absolute;
             bottom: 0;
@@ -183,11 +177,24 @@ $double-gap: 12px;
                 background: $D50;
                 transition: 0.2s ease all;
             }
+            transition: 0.3s ease all;
         }
         @at-root {
             .hasFocus .barBlue:before,
-            .hasFocus .bar:after {
+            .hasFocus .barBlue:after {
                 width:100%;
+            }
+        }
+
+        .input:hover ~ .barBlue, .input.hasHover ~ .barBlue {
+            background-color: #000;
+            transition: 0.3s ease all;
+        }
+
+        &.hasError {
+            .bar, .input:hover ~ .barBlue, .input.hasHover ~ .barBlue {
+                background-color: #f2564d;
+                height: 2px;
             }
         }
     }

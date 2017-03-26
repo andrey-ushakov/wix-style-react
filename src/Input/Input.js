@@ -7,7 +7,7 @@ import Unit from './Unit';
 import Group from './Group';
 import InputPrefix from './InputPrefix';
 import InputSuffix from './InputSuffix';
-import {CloseThin, ArrowDownThin, Search4, Help, Error} from '../Icons/dist';
+import {CloseThin, ArrowDownThin, Search4, Help, Error, InfoMaterial} from '../Icons/dist';
 import Tooltip from '../Tooltip';
 import SvgExclamation from '../svg/Exclamation.js';
 
@@ -100,22 +100,35 @@ class Input extends Component {
     const isClearButtonVisible = onClear && !error && !disabled && !!value;
 
     const errElement = theme === 'amaterial' ?
-      this.state.focus ? null : <div className={styles.errorIcon}><Error size="1.5em"/></div> :
-      <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>;
+      this.state.focus ? null :
+      <div className={styles.errorIcon}><Error size="1.5em"/></div> :
+      (
+        <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0} placement="top" moveBy={{x: 2, y: 0}} alignment="center" content={errorMessage} overlay="" theme="dark">
+          <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>
+        </Tooltip>
+      );
+
+    const helpElement = theme === 'amaterial' ?
+      (
+        <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
+          <div className={styles.help}><InfoMaterial height="20" width="20"/></div>
+        </Tooltip>
+      ) :
+      (
+        <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
+          <div className={styles.help}><Help height="20" width="20"/></div>
+        </Tooltip>
+      );
 
     const suffixes = [
       {
         component: () =>
-          <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0} placement="top" moveBy={{x: 2, y: 0}} alignment="center" content={errorMessage} overlay="" theme="dark">
-            {errElement}
-          </Tooltip>,
+          errElement,
         isVisible: error && !disabled
       },
       {
         component: () =>
-          <Tooltip dataHook="input-tooltip" disabled={helpMessage.length === 0} maxWidth="250px" placement="right" moveBy={{x: 2, y: 0}} alignment="center" hideDelay={100} content={helpMessage} overlay="">
-            <div className={styles.help}><Help height="20" width="20"/></div>
-          </Tooltip>,
+          helpElement,
         isVisible: help && !disabled
       },
       {
@@ -159,34 +172,45 @@ class Input extends Component {
       [styles.withSuffixes]: suffixes.length > 1
     });
 
+    const innerInputElement = (
+      <input
+        style={{textOverflow}}
+        ref={input => this.input = input}
+        className={inputClassNames}
+        id={id}
+        disabled={disabled}
+        defaultValue={defaultValue}
+        value={value}
+        onChange={this._onChange}
+        maxLength={maxLength}
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
+        onKeyDown={this._onKeyDown}
+        onDoubleClick={this._onDoubleClick}
+        placeholder={placeholder}
+        tabIndex={tabIndex}
+        autoFocus={autoFocus}
+        onClick={this._onClick}
+        onKeyUp={onKeyUp}
+        readOnly={readOnly}
+        type={type}
+        />
+    );
+
+    const inputWithWrapper = theme === 'amaterial' ? (
+      <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0 || theme !== 'amaterial'} placement="left" showTrigger="custom" hideTrigger="custom" hideDelay={5} showDelay={5} active={!this.state.focus} moveBy={{x: -8, y: 0}} alignment="center" content={errorMessage} overlay="">
+        {innerInputElement}
+      </Tooltip>
+    ) :
+      innerInputElement;
+
     return (
       <div className={classes} data-hook={dataHook}>
         { prefixes.length > 0 && <InputPrefix prefixes={prefixes}/> }
 
         {(theme === 'amaterial') && <Label for={id}>{title}</Label>}
 
-        <input
-          style={{textOverflow}}
-          ref={input => this.input = input}
-          className={inputClassNames}
-          id={id}
-          disabled={disabled}
-          defaultValue={defaultValue}
-          value={value}
-          onChange={this._onChange}
-          maxLength={maxLength}
-          onFocus={this._onFocus}
-          onBlur={this._onBlur}
-          onKeyDown={this._onKeyDown}
-          onDoubleClick={this._onDoubleClick}
-          placeholder={placeholder}
-          tabIndex={tabIndex}
-          autoFocus={autoFocus}
-          onClick={this._onClick}
-          onKeyUp={onKeyUp}
-          readOnly={readOnly}
-          type={type}
-          />
+        {inputWithWrapper}
 
         { suffixes.length > 0 && <InputSuffix suffixes={suffixes}/> }
 
