@@ -10,8 +10,8 @@ const style = {
 
 export default () =>
   <div>
-    <div className="ltr" style={style}>Input<br/><Input/></div>
-    <div className="ltr" style={style}>Focus<Input forceFocus/></div>
+    <div className="ltr" style={style}><br/><Input title="title" placeholder="place holder" theme="amaterial"/></div>
+    <div className="ltr" style={style}><Input error title="title" placeholder="place holder" theme="amaterial"/></div>
     <div className="ltr" style={style}>Hover<Input forceHover/></div>
     <div className="ltr" style={style}>With placeholder<Input placeholder="Search..."/></div>
     <div className="ltr" style={style}>Disabled<br/><Input disabled placeholder="disabled"/></div>

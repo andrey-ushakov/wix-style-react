@@ -7,7 +7,7 @@ import Unit from './Unit';
 import Group from './Group';
 import InputPrefix from './InputPrefix';
 import InputSuffix from './InputSuffix';
-import {CloseThin, ArrowDownThin, Search4, Help} from '../Icons/dist';
+import {CloseThin, ArrowDownThin, Search4, Help, Error} from '../Icons/dist';
 import Tooltip from '../Tooltip';
 import SvgExclamation from '../svg/Exclamation.js';
 
@@ -60,7 +60,8 @@ class Input extends Component {
       noLeftBorderRadius,
       maxLength,
       noRightBorderRadius,
-      textOverflow
+      textOverflow,
+      title
     } = this.props;
 
     let classes = {
@@ -98,11 +99,15 @@ class Input extends Component {
 
     const isClearButtonVisible = onClear && !error && !disabled && !!value;
 
+    const errElement = theme === 'amaterial' ?
+      this.state.focus ? null : <div className={styles.errorIcon}><Error size="1.5em"/></div> :
+      <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>;
+
     const suffixes = [
       {
         component: () =>
           <Tooltip dataHook="input-tooltip" disabled={errorMessage.length === 0} placement="top" moveBy={{x: 2, y: 0}} alignment="center" content={errorMessage} overlay="" theme="dark">
-            <div className={styles.exclamation}><SvgExclamation width={2} height={11}/></div>
+            {errElement}
           </Tooltip>,
         isVisible: error && !disabled
       },
@@ -158,7 +163,7 @@ class Input extends Component {
       <div className={classes} data-hook={dataHook}>
         { prefixes.length > 0 && <InputPrefix prefixes={prefixes}/> }
 
-        {(theme === 'amaterial') && <Label for={id}>{placeholder}</Label>}
+        {(theme === 'amaterial') && <Label for={id}>{title}</Label>}
 
         <input
           style={{textOverflow}}
@@ -174,7 +179,7 @@ class Input extends Component {
           onBlur={this._onBlur}
           onKeyDown={this._onKeyDown}
           onDoubleClick={this._onDoubleClick}
-          placeholder={(theme !== 'amaterial') ? placeholder : ''}
+          placeholder={placeholder}
           tabIndex={tabIndex}
           autoFocus={autoFocus}
           onClick={this._onClick}
@@ -185,7 +190,8 @@ class Input extends Component {
 
         { suffixes.length > 0 && <InputSuffix suffixes={suffixes}/> }
 
-        {(theme === 'material' || theme === 'amaterial') && <div className={styles.bar}/>}
+        {(theme === 'material') && <div className={`${styles.bar} ${styles.barBlack}`}/>}
+        {(theme === 'amaterial') && <div className={`${styles.bar} ${styles.barBlue}`}/>}
       </div>
     );
   }
@@ -293,7 +299,8 @@ Input.propTypes = {
   noRightBorderRadius: PropTypes.string,
   help: PropTypes.bool,
   textOverflow: PropTypes.string,
-  helpMessage: PropTypes.string
+  helpMessage: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default Input;
