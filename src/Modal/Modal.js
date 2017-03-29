@@ -27,7 +27,7 @@ class Modal extends WixComponent {
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: props.scrollable === false ? 'hidden' : 'auto'
+        overflowY: props.scrollable ? 'hidden' : 'auto'
       },
       content: {
         // Overriding defaults
@@ -46,7 +46,7 @@ class Modal extends WixComponent {
 
     const modalClasses = `${styles.modal} ${styles[props.theme]}`;
     const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: props.scrollable === false
+      [styles.portalNonScrollable]: props.scrollable
     });
 
     return (
@@ -87,7 +87,8 @@ Modal.defaultProps = {
   shouldCloseOnOverlayClick: false,
   horizontalPosition: 'center',
   verticalPosition: 'center',
-  closeTimeoutMS: 500
+  closeTimeoutMS: 500,
+  scrollable: true
 };
 
 export default Modal;
