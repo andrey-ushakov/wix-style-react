@@ -27,7 +27,7 @@ class Modal extends WixComponent {
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: props.scrollable ? 'hidden' : 'auto'
+        overflowY: props.scrollable ? 'auto' : 'hidden'
       },
       content: {
         // Overriding defaults
@@ -46,7 +46,7 @@ class Modal extends WixComponent {
 
     const modalClasses = `${styles.modal} ${styles[props.theme]}`;
     const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: props.scrollable
+      [styles.portalNonScrollable]: !props.scrollable
     });
 
     return (
