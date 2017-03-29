@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import classnames from 'classnames';
 import styles from './Modal.scss';
 import {colors, positions} from './ModalConstants';
 import WixComponent from '../WixComponent';
@@ -26,7 +27,7 @@ class Modal extends WixComponent {
         display: 'flex',
         justifyContent,
         alignItems,
-        overflowY: 'auto'
+        overflowY: props.scrollable === false ? 'hidden' : 'auto'
       },
       content: {
         // Overriding defaults
@@ -44,10 +45,13 @@ class Modal extends WixComponent {
     };
 
     const modalClasses = `${styles.modal} ${styles[props.theme]}`;
+    const portalClassName = classnames(styles.portal, {
+      [styles.portalNonScrollable]: props.scrollable === false
+    });
 
     return (
       <ReactModal
-        portalClassName={styles.portal}
+        portalClassName={portalClassName}
         isOpen={props.isOpen}
         shouldCloseOnOverlayClick={props.shouldCloseOnOverlayClick}
         onRequestClose={props.onRequestClose}
@@ -73,7 +77,8 @@ Modal.propTypes = {
   onAfterOpen: React.PropTypes.func,
   horizontalPosition: React.PropTypes.oneOf(Object.keys(positions)),
   verticalPosition: React.PropTypes.oneOf(Object.keys(positions)),
-  closeTimeoutMS: React.PropTypes.number
+  closeTimeoutMS: React.PropTypes.number,
+  scrollable: React.PropTypes.bool
 };
 
 Modal.defaultProps = {
