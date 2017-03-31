@@ -14,8 +14,6 @@ const AmaterialErrorSuffix = ({focused, error, errorMessage}) => focused ?
     dataHook="input-tooltip"
     disabled={!error && !errorMessage}
     placement="right"
-    showTrigger="custom"
-    hideTrigger="custom"
     hideDelay={5}
     showDelay={5}
     active={!focused}

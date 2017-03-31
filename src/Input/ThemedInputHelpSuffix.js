@@ -12,7 +12,7 @@ const AmaterialHelpSuffix = ({help, helpMessage}) =>
     disabled={!help || helpMessage.length === 0}
     maxWidth="250px"
     placement="right"
-    moveBy={{x: 6, y: -10}}
+    moveBy={{x: 10, y: -10}}
     alignment="center"
     hideDelay={100}
     content={helpMessage}
