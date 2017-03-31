@@ -247,6 +247,7 @@ $double-gap: 12px;
 // RTL layout based on global style set on document body or parent element.
 :global(.rtl) {
     .root,
+    .input-wrapper,
     .prefixes,
     .suffixes { flex-direction: row-reverse; }
     .input {
