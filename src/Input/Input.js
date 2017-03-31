@@ -1,7 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import classNames from 'classnames';
 
-import Label from '../Label';
 import Ticker from './Ticker';
 import Unit from './Unit';
 import Group from './Group';
@@ -222,52 +221,4 @@ Input.propTypes = {
   title: PropTypes.string
 };
 
-function theme(WrappedComponent) {
-  class ThemedComponent extends WrappedComponent {
-    static displayName = WrappedComponent.displayName;
-    render() {
-      const {
-        id,
-        size,
-        dataHook,
-        title,
-        theme,
-        rtl,
-        disabled,
-        error,
-        forceHover,
-        forceFocus,
-        roundInput,
-        noLeftBorderRadius,
-        noRightBorderRadius
-      } = this.props;
-
-      const classes = {
-        [styles.rtl]: !!rtl,
-        [styles.disabled]: disabled,
-        [styles.hasError]: !!error,
-        [styles.hasHover]: forceHover,
-        [styles.hasFocus]: forceFocus || this.state.focus,
-        [styles.roundInput]: roundInput,
-        [styles.hasValue]: this.input && !!this.input.value,
-        [noRightBorderRadius]: noRightBorderRadius,
-        [noLeftBorderRadius]: noLeftBorderRadius,
-      };
-
-      return (
-        <div
-          className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}`])}
-          data-hook={dataHook}
-          >
-          {(theme === 'amaterial') && <Label for={id}>{title}</Label>}
-          {super.render()}
-          {(theme === 'material') && <div className={`${styles.bar} ${styles.barBlack}`}/>}
-          {(theme === 'amaterial') && <div className={`${styles.bar} ${styles.barBlue}`}/>}
-        </div>
-      );
-    }
-  }
-  return ThemedComponent;
-}
-
-export default theme(Input);
+export default Input;

@@ -30,39 +30,5 @@ InputHelpSuffix.propTypes = {
   help: PropTypes.bool,
 };
 
-const AmaterialHelpSuffix = ({help, helpMessage}) =>
-  <Tooltip
-    dataHook="input-tooltip"
-    disabled={!help || helpMessage.length === 0}
-    maxWidth="250px"
-    placement="right"
-    moveBy={{x: 6, y: -10}}
-    alignment="center"
-    hideDelay={100}
-    content={helpMessage}
-    overlay=""
-    >
-    <div className={styles.amaterialHelp}><InfoMaterial height="30" width="30"/></div>
-  </Tooltip>;
 
-AmaterialHelpSuffix.propTypes = {
-  help: PropTypes.bool,
-  helpMessage: PropTypes.string
-};
-
-function theme(WrappedComponent) {
-
-  class ThemedComponent extends WrappedComponent {
-    static displayName = WrappedComponent.displayName
-
-    render() {
-      return this.props.theme === 'amaterial' ?
-        <AmaterialHelpSuffix help={this.props.help} helpMessage={this.props.helpMessage}/> :
-        super.render();
-    }
-  }
-
-  return ThemedComponent;
-}
-
-export default theme(InputHelpSuffix);
+export default InputHelpSuffix;

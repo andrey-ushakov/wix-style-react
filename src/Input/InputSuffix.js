@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 
 import {CloseThin, ArrowDownThin, Search4} from '../Icons/dist';
-import InputErrorSuffix from './InputErrorSuffix';
-import InputHelpSuffix from './InputHelpSuffix';
+import ThemedInputErrorSuffix from './ThemedInputErrorSuffix';
+import ThemedInputHelpSuffix from './ThemedInputHelpSuffix';
 
 import styles from './Input.scss';
 
@@ -31,11 +31,11 @@ const InputSuffix = ({theme, errorMessage, error, disabled, help, helpMessage, o
 
   const suffixes = [
     {
-      component: () => <InputErrorSuffix theme={theme} focused={focused} errorMessage={errorMessage}/>,
+      component: () => <ThemedInputErrorSuffix theme={theme} focused={focused} errorMessage={errorMessage}/>,
       isVisible: suffixRules.inputErrorSuffix({error, disabled})
     },
     {
-      component: () => <InputHelpSuffix theme={theme} help={help} helpMessage={helpMessage}/>,
+      component: () => <ThemedInputHelpSuffix theme={theme} help={help} helpMessage={helpMessage}/>,
       isVisible: suffixRules.inputHelpSuffix({help, disabled})
     },
     {
