@@ -4,16 +4,10 @@ import Template from './Template';
 import RadioGroup from '../../src/RadioGroup';
 import Label from '../../src/Label';
 import Input from '../../src/Input';
-import ToggleSwitch from '../../src/ToggleSwitch';
-import * as Icons from '../../src/Icons/dist';
 
 import styles from '../Button/ExampleButton.scss';
 
 class ExampleTooltip extends Component {
-
-  static propTypes = {
-    onChange: PropTypes.func
-  };
 
   state = {
     type: 'default',
@@ -30,7 +24,7 @@ class ExampleTooltip extends Component {
             <div className={styles.flex}>
               <RadioGroup
                 display="horizontal"
-                value={this.state.theme}
+                value={this.state.type}
                 onChange={type => this.setState({type})}
               >
                 <RadioGroup.Radio value="default">Default</RadioGroup.Radio>
@@ -53,7 +47,10 @@ class ExampleTooltip extends Component {
 
         <div className={styles[this.state.theme === 'whiteblue' ? 'output-lightblue' : 'output']}>
           <div className={`${styles[this.state.theme]} ${styles.exampleWrapper}`}>
-            <Template {...this.state} onChange={this.props.onChange}/>
+            <Template
+              theme={this.state.type === 'default' ? 'dark' : 'light'}
+              text={this.state.text}
+              onChange={this.props.onChange}/>
           </div>
         </div>
       </form>

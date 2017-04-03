@@ -1,7 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import Button from 'wix-style-react/Button';
-import {Close} from '../../src/Icons/dist';
+import Tooltip from 'wix-style-react/Tooltip';
 
 export class Form extends Component {
 
@@ -32,13 +31,9 @@ export class Form extends Component {
     }
 
     return (
-      <Button
-        disabled={this.props.disabled}
-        height={this.props.height}
-        theme={this.props.theme}
-        {...icons}>
-        {this.props.iconOnly ? <Close size={iconSize}/> : this.props.text}
-      </Button>
+      <Tooltip active placement="right" alignment="center" content={this.props.text} showTrigger="custom" hideTrigger="custom" theme={this.props.theme}>
+        <div>Dark Theme</div>
+      </Tooltip>
     );
   }
 
@@ -50,12 +45,12 @@ export class Form extends Component {
 Form.propTypes = {
   onChange: PropTypes.func.isRequired,
   theme: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool.isRequired,
-  iconOnly: React.PropTypes.bool,
-  text: React.PropTypes.string,
-  height: React.PropTypes.string,
-  prefixIcon: React.PropTypes.node,
-  suffixIcon: React.PropTypes.node
+  // disabled: React.PropTypes.bool.isRequired,
+  // iconOnly: React.PropTypes.bool,
+  text: React.PropTypes.string
+  // height: React.PropTypes.string,
+  // prefixIcon: React.PropTypes.node,
+  // suffixIcon: React.PropTypes.node
 };
 
 export default Form;
