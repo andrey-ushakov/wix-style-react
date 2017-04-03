@@ -55,6 +55,7 @@ function loadStories() {
   require('../stories/Button/CompositeStory');
   require('../stories/Breadcrubms/CompositeStory');
   require('../stories/Tabs');
+  require('../stories/Tooltip/CompositeStory');
   require('../stories/Notification');
 
   // Animations
