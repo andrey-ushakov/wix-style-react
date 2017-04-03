@@ -1,99 +1,41 @@
 import React from 'react';
 import {storiesOf} from '@kadira/storybook';
-
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
-import Readme from '../../src/Tooltip/README.md';
-
-import ExamplePlacement from './ExamplePlacement';
-import ExamplePlacementRaw from '!raw!./ExamplePlacement';
-import ExampleBounce from './ExampleBounce';
-import ExampleBounceRaw from '!raw!./ExampleBounce';
-import ExampleTheme from './ExampleTheme';
-import ExampleThemeRaw from '!raw!./ExampleTheme';
-import ExampleCustomContent from './ExampleCustomContent';
-import ExampleCustomContentRaw from '!raw!./ExampleCustomContent';
-import ExampleMove from './ExampleMove';
-import ExampleMoveRaw from '!raw!./ExampleMove';
+import InteractiveCodeExample from '../utils/Components/InteractiveCodeExample';
+import ExampleTooltip from './ExampleTooltip';
+// import ExamplePopover from './ExamplePopover';
+// import ExamplePopoverMenu from './ExamplePopoverMenu';
+// import CustomPopover from './CustomPopover';
 
 storiesOf('7. Tooltips', module)
   .add('7.1. Tooltip', () => (
-<div>
-<Markdown source={Readme}/>
-  <CodeExample title="Tooltip Placement" code={ExamplePlacementRaw}>
-  <ExamplePlacement/>
-  </CodeExample>
-  <CodeExample title="Tooltip Bounce" code={ExampleBounceRaw}>
-  <ExampleBounce/>
-  </CodeExample>
-  <CodeExample title="Tooltip Theme" code={ExampleThemeRaw}>
-  <ExampleTheme/>
-  </CodeExample>
-  <CodeExample title="Tooltip Custom Content" code={ExampleCustomContentRaw}>
-  <ExampleCustomContent/>
-  </CodeExample>
-  <CodeExample title="Custom tooltip adjustment" code={ExampleMoveRaw}>
-  <ExampleMove/>
-  </CodeExample>
-  </div>
+    <div>
+      <h1>Tooltip</h1>
+      <InteractiveCodeExample title="Customize a <Tooltip/>">
+        <ExampleTooltip/>
+      </InteractiveCodeExample>
+    </div>
 ))
 .add('7.2. Popover', () => (
-<div>
-<Markdown source={Readme}/>
-  <CodeExample title="Tooltip Placement" code={ExamplePlacementRaw}>
-  <ExamplePlacement/>
-  </CodeExample>
-  <CodeExample title="Tooltip Bounce" code={ExampleBounceRaw}>
-  <ExampleBounce/>
-  </CodeExample>
-  <CodeExample title="Tooltip Theme" code={ExampleThemeRaw}>
-  <ExampleTheme/>
-  </CodeExample>
-  <CodeExample title="Tooltip Custom Content" code={ExampleCustomContentRaw}>
-  <ExampleCustomContent/>
-  </CodeExample>
-  <CodeExample title="Custom tooltip adjustment" code={ExampleMoveRaw}>
-  <ExampleMove/>
-  </CodeExample>
+  <div>
+    <h1>Popover</h1>
+    <InteractiveCodeExample title="Customize a <Tooltip/>">
+      <ExampleTooltip/>
+    </InteractiveCodeExample>
   </div>
 ))
 .add('7.3. Popover Menu', () => (
-<div>
-<Markdown source={Readme}/>
-  <CodeExample title="Tooltip Placement" code={ExamplePlacementRaw}>
-  <ExamplePlacement/>
-  </CodeExample>
-  <CodeExample title="Tooltip Bounce" code={ExampleBounceRaw}>
-  <ExampleBounce/>
-  </CodeExample>
-  <CodeExample title="Tooltip Theme" code={ExampleThemeRaw}>
-  <ExampleTheme/>
-  </CodeExample>
-  <CodeExample title="Tooltip Custom Content" code={ExampleCustomContentRaw}>
-  <ExampleCustomContent/>
-  </CodeExample>
-  <CodeExample title="Custom tooltip adjustment" code={ExampleMoveRaw}>
-  <ExampleMove/>
-  </CodeExample>
+  <div>
+    <h1>Popover Menu</h1>
+    <InteractiveCodeExample title="Customize a <Tooltip/>">
+      <ExampleTooltip/>
+    </InteractiveCodeExample>
   </div>
 ))
 .add('7.4. Custom Popover', () => (
-<div>
-<Markdown source={Readme}/>
-  <CodeExample title="Tooltip Placement" code={ExamplePlacementRaw}>
-  <ExamplePlacement/>
-  </CodeExample>
-  <CodeExample title="Tooltip Bounce" code={ExampleBounceRaw}>
-  <ExampleBounce/>
-  </CodeExample>
-  <CodeExample title="Tooltip Theme" code={ExampleThemeRaw}>
-  <ExampleTheme/>
-  </CodeExample>
-  <CodeExample title="Tooltip Custom Content" code={ExampleCustomContentRaw}>
-  <ExampleCustomContent/>
-  </CodeExample>
-  <CodeExample title="Custom tooltip adjustment" code={ExampleMoveRaw}>
-  <ExampleMove/>
-  </CodeExample>
+  <div>
+    <h1>Custom Popover</h1>
+    <InteractiveCodeExample title="Customize a <Tooltip/>">
+      <ExampleTooltip/>
+    </InteractiveCodeExample>
   </div>
 ));
