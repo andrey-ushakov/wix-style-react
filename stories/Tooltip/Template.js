@@ -1,8 +1,19 @@
 import React, {PropTypes, Component} from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import Tooltip from 'wix-style-react/Tooltip';
+import Button from 'wix-style-react/Button';
 
-export class Form extends Component {
+export class Template extends Component {
+
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    theme: Tooltip.propTypes.theme,
+    placement: Tooltip.propTypes.placement,
+    text: Tooltip.propTypes.content,
+    showTrigger: Tooltip.propTypes.showTrigger,
+    hideTrigger: Tooltip.propTypes.hideTrigger,
+    type: PropTypes.oneOf(['tooltip', 'popover'])
+  };
 
   componentDidUpdate(props) {
     props.onChange(reactElementToJSXString(this.getComponent()));
@@ -13,45 +24,30 @@ export class Form extends Component {
   }
 
   getComponent() {
-    let iconSize = '6px';
-    if (this.props.height === 'large') {
-      iconSize = '8px';
-    }
-    if (['close-standard', 'close-dark', 'close-transparent'].indexOf(this.props.theme) < 0) {
-      iconSize = '12px';
-    }
-
-    let icons = {};
-    if (this.props.prefixIcon) {
-      icons.prefixIcon = this.props.prefixIcon;
-    }
-
-    if (this.props.suffixIcon) {
-      icons.suffixIcon = this.props.suffixIcon;
-    }
-
     return (
-      <Tooltip active placement="right" alignment="center" content={this.props.text} showTrigger="custom" hideTrigger="custom" theme={this.props.theme}>
-        <div>Dark Theme</div>
+      <Tooltip
+        active
+        placement={this.props.placement}
+        alignment="center"
+        content={this.props.text}
+        showTrigger={this.props.showTrigger}
+        hideTrigger={this.props.hideTrigger}
+        theme={this.props.theme}
+        >
+        {this.tooltipTarget[this.props.type]}
       </Tooltip>
     );
   }
+
+  tooltipTarget = {
+    tooltip: <div>Dark Theme</div>,
+    popover: <Button type="button">Click Me</Button>
+  };
 
   render() {
     return this.getComponent();
   }
 }
 
-Form.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  theme: React.PropTypes.string.isRequired,
-  // disabled: React.PropTypes.bool.isRequired,
-  // iconOnly: React.PropTypes.bool,
-  text: React.PropTypes.string
-  // height: React.PropTypes.string,
-  // prefixIcon: React.PropTypes.node,
-  // suffixIcon: React.PropTypes.node
-};
-
-export default Form;
+export default Template;
 

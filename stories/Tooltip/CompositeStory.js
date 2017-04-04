@@ -2,7 +2,7 @@ import React from 'react';
 import {storiesOf} from '@kadira/storybook';
 import InteractiveCodeExample from '../utils/Components/InteractiveCodeExample';
 import ExampleTooltip from './ExampleTooltip';
-// import ExamplePopover from './ExamplePopover';
+import ExamplePopover from './ExamplePopover';
 // import ExamplePopoverMenu from './ExamplePopoverMenu';
 // import CustomPopover from './CustomPopover';
 
@@ -19,7 +19,7 @@ storiesOf('7. Tooltips', module)
   <div>
     <h1>Popover</h1>
     <InteractiveCodeExample title="Customize a <Tooltip/>">
-      <ExampleTooltip/>
+      <ExamplePopover/>
     </InteractiveCodeExample>
   </div>
 ))

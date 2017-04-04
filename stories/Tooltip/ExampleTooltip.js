@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 import Template from './Template';
 import RadioGroup from '../../src/RadioGroup';
@@ -50,6 +50,7 @@ class ExampleTooltip extends Component {
             <Template
               theme={this.state.type === 'default' ? 'dark' : 'light'}
               text={this.state.text}
+              type="tooltip"
               onChange={this.props.onChange}/>
           </div>
         </div>
