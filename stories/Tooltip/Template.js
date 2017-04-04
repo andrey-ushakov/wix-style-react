@@ -33,6 +33,7 @@ export class Template extends Component {
         showTrigger={this.props.showTrigger}
         hideTrigger={this.props.hideTrigger}
         theme={this.props.theme}
+    		size={this.props.size}
         >
         {this.tooltipTarget[this.props.type]}
       </Tooltip>
@@ -40,7 +41,7 @@ export class Template extends Component {
   }
 
   tooltipTarget = {
-    tooltip: <div>Dark Theme</div>,
+    tooltip: <div>Hover me to see the tooltip</div>,
     popover: <Button type="button">Click Me</Button>
   };
 

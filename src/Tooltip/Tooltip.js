@@ -57,7 +57,8 @@ class Tooltip extends WixComponent {
      * Positive value calculates position from left/top.
      * Negative one calculates position from right/bottom.
      */
-    moveArrowTo: PropTypes.number
+    moveArrowTo: PropTypes.number,
+    size: PropTypes.string
   };
 
   static defaultProps = {
@@ -74,7 +75,8 @@ class Tooltip extends WixComponent {
     onActiveChange: () => {},
     theme: 'light',
     disabled: false,
-    children: null
+    children: null,
+    size: 'normal'
   };
 
   _childNode = null;
@@ -101,6 +103,7 @@ class Tooltip extends WixComponent {
           style={{zIndex: this.props.zIndex}}
           arrowStyle={this.state.arrowStyle}
           maxWidth={this.props.maxWidth}
+          size={this.props.size}
           >{this.props.content}</TooltipContent>
       );
 

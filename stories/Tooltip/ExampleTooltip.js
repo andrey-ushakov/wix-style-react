@@ -11,7 +11,8 @@ class ExampleTooltip extends Component {
 
   state = {
     type: 'default',
-    text: 'Tooltip appears on hover'
+    text: 'Tooltip appears on hover',
+    size: 'normal'
   };
 
   render() {
@@ -20,18 +21,32 @@ class ExampleTooltip extends Component {
         <div className={styles.input}>
 
           <div className={styles.option}>
-            <Label>Type</Label>
+            <Label>Size</Label>
             <div className={styles.flex}>
               <RadioGroup
                 display="horizontal"
-                value={this.state.type}
-                onChange={type => this.setState({type})}
+                value={this.state.size}
+                onChange={size => this.setState({size})}
               >
-                <RadioGroup.Radio value="default">Default</RadioGroup.Radio>
-                <RadioGroup.Radio value="biggerInfo">Bigger info tooltip</RadioGroup.Radio>
+                <RadioGroup.Radio value="normal">Default</RadioGroup.Radio>
+                <RadioGroup.Radio value="large">Bigger info tooltip</RadioGroup.Radio>
               </RadioGroup>
             </div>
           </div>
+
+          <div className={styles.option}>
+            <Label>Theme</Label>
+            <div className={styles.flex}>
+            <RadioGroup
+              display="horizontal"
+              value={this.state.type}
+              onChange={type => this.setState({type})}
+            >
+              <RadioGroup.Radio value="default">Dark</RadioGroup.Radio>
+              <RadioGroup.Radio value="white">White</RadioGroup.Radio>
+            </RadioGroup>
+          </div>
+        </div>
 
           <div className={styles.option}>
             <Label>Text</Label>
@@ -50,8 +65,10 @@ class ExampleTooltip extends Component {
             <Template
               theme={this.state.type === 'default' ? 'dark' : 'light'}
               text={this.state.text}
-              type="tooltip"
-              onChange={this.props.onChange}/>
+    					type="tooltip"
+              onChange={this.props.onChange}
+              size={this.state.size}
+                />
           </div>
         </div>
       </form>
