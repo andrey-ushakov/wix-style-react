@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
 import Template from './Template';
-import RadioGroup from '../../src/RadioGroup';
-import Label from '../../src/Label';
-import Input from '../../src/Input';
+import RadioGroup from '../../../src/RadioGroup';
+import Label from '../../../src/Label';
+import Input from '../../../src/Input';
 
-import styles from '../Tooltip/Example.scss';
+import styles from './Example.scss';
 
 class ExampleTooltip extends Component {
 

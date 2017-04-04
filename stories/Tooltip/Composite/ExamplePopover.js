@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 
 import Template from './Template';
-import RadioGroup from '../../src/RadioGroup';
-import Label from '../../src/Label';
-import Input from '../../src/Input';
+import RadioGroup from '../../../src/RadioGroup';
+import Label from '../../../src/Label';
+import Input from '../../../src/Input';
 
-import styles from '../Tooltip/Example.scss';
+import styles from './Example.scss';
 
 class ExamplePopover extends Component {
 
   state = {
     placement: 'top',
-    text: 'Tooltip appears on hover'
+    text: 'Popover appears on click'
   };
 
   handleSubmit = event => event.preventDefault();
@@ -49,8 +49,8 @@ class ExamplePopover extends Component {
           </div>
         </div>
 
-        <div className={styles[this.state.theme === 'whiteblue' ? 'output-lightblue' : 'output']}>
-          <div className={`${styles[this.state.theme]} ${styles.exampleWrapper}`}>
+        <div className={styles.output}>
+          <div className={styles.exampleWrapper}>
             <Template
               theme="light"
               placement={this.state.placement}

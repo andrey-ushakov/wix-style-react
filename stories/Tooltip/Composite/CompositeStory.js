@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@kadira/storybook';
-import InteractiveCodeExample from '../utils/Components/InteractiveCodeExample';
+import InteractiveCodeExample from '../../utils/Components/InteractiveCodeExample';
 import ExampleTooltip from './ExampleTooltip';
 import ExamplePopover from './ExamplePopover';
 // import ExamplePopoverMenu from './ExamplePopoverMenu';

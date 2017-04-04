@@ -26,14 +26,14 @@ export class Template extends Component {
   getComponent() {
     return (
       <Tooltip
-        active
         placement={this.props.placement}
         alignment="center"
         content={this.props.text}
         showTrigger={this.props.showTrigger}
         hideTrigger={this.props.hideTrigger}
         theme={this.props.theme}
-    		size={this.props.size}
+        size={this.props.size}
+        shouldCloseOnClickOutside
         >
         {this.tooltipTarget[this.props.type]}
       </Tooltip>

@@ -49,7 +49,7 @@ class TooltipContent extends Component {
      * Specifies if tooltip content should use bouncing animation.
      */
     bounce: PropTypes.bool,
-    size: PropTypes.string
+    size: PropTypes.oneOf(['normal', 'large'])
   };
 
   static defaultProps = {
