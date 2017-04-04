@@ -5,7 +5,7 @@ import RadioGroup from '../../src/RadioGroup';
 import Label from '../../src/Label';
 import Input from '../../src/Input';
 
-import styles from '../Button/ExampleButton.scss';
+import styles from '../Tooltip/Example.scss';
 
 class ExampleTooltip extends Component {
 
