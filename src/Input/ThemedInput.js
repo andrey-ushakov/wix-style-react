@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Input from './Input';
-import Label from '../Label';
+import Typography from '../Typography';
 
 import styles from './Input.scss';
 
@@ -21,7 +21,7 @@ class ThemedInput extends Input {
       roundInput,
       noLeftBorderRadius,
       noRightBorderRadius,
-      value
+      value,
     } = this.props;
 
     const classes = {
@@ -36,13 +36,17 @@ class ThemedInput extends Input {
       [noLeftBorderRadius]: noLeftBorderRadius,
     };
 
+    let placeholder = this.props.placeholder;
+    if (theme === 'amaterial' && !classes[styles.hasFocus] && !classes[styles.hasValue]) {
+      placeholder = '';
+    }
     return (
       <div
         className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}`])}
         data-hook={dataHook}
         >
-        {(theme === 'amaterial') && <Label for={id}>{title}</Label>}
-        {super.render()}
+        {(theme === 'amaterial') && <label className={classNames(styles.materialTitle, Typography.t1_1)} htmlFor={id}>{title}</label>}
+        {super.render({placeholder})}
         {(theme === 'material') && <div className={`${styles.bar} ${styles.barBlack}`}/>}
         {(theme === 'amaterial') && <div className={`${styles.bar} ${styles.barBlue}`}/>}
       </div>
