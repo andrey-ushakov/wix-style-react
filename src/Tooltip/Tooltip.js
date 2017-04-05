@@ -105,9 +105,9 @@ class Tooltip extends WixComponent {
           style={{zIndex: this.props.zIndex}}
           arrowStyle={this.state.arrowStyle}
           maxWidth={this.props.maxWidth}
-          size={this.props.size}
-        >{this.props.content}</TooltipContent>
-      );
+          size={this.props.size}>
+          {this.props.content}
+        </TooltipContent>);
 
       ReactDOM.render(tooltip, this._mountNode);
     }
