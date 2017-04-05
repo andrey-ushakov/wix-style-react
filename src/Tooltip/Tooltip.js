@@ -73,7 +73,7 @@ class Tooltip extends WixComponent {
     zIndex: 2000,
     maxWidth: '1200px',
     active: false,
-    theme: 'light',
+    theme: 'dark',
     disabled: false,
     children: null,
     size: 'normal',

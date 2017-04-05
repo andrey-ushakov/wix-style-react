@@ -16,11 +16,11 @@ export class Template extends Component {
   };
 
   componentDidUpdate(props) {
-    props.onChange(reactElementToJSXString(this.getComponent()));
+    props.onChange(getExampleCode(this.getComponent()));
   }
 
   componentDidMount() {
-    this.props.onChange(reactElementToJSXString(this.getComponent()));
+    this.props.onChange(getExampleCode(this.getComponent()));
   }
 
   getComponent() {
@@ -48,6 +48,13 @@ export class Template extends Component {
   render() {
     return this.getComponent();
   }
+}
+
+function getExampleCode(element) {
+  return reactElementToJSXString(element, {
+    filterProps: ['onChange'],
+    showDefaultProps: false,
+  });
 }
 
 export default Template;
