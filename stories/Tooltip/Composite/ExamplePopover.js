@@ -14,8 +14,6 @@ class ExamplePopover extends Component {
     text: 'Popover appears on click'
   };
 
-  handleSubmit = event => event.preventDefault();
-
   render() {
     return (
       <form className={styles.form}>

@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import Tooltip from 'wix-style-react/Tooltip';
 import Button from 'wix-style-react/Button';
+import {Dots} from '../../../src/Icons/dist';
 
 export class Template extends Component {
 
@@ -12,7 +13,8 @@ export class Template extends Component {
     text: Tooltip.propTypes.content,
     showTrigger: Tooltip.propTypes.showTrigger,
     hideTrigger: Tooltip.propTypes.hideTrigger,
-    type: PropTypes.oneOf(['tooltip', 'popover'])
+    type: PropTypes.oneOf(['tooltip', 'popover', 'popoverMenu']),
+    size: Tooltip.propTypes.size
   };
 
   componentDidUpdate(props) {
@@ -26,6 +28,7 @@ export class Template extends Component {
   getComponent() {
     return (
       <Tooltip
+        debug
         placement={this.props.placement}
         alignment="center"
         content={this.props.text}
@@ -35,15 +38,34 @@ export class Template extends Component {
         size={this.props.size}
         shouldCloseOnClickOutside
         >
-        {this.tooltipTarget[this.props.type]}
+        {this.getTooltipTarget()}
       </Tooltip>
     );
   }
 
-  tooltipTarget = {
-    tooltip: <div>Hover me to see the tooltip</div>,
-    popover: <Button type="button">Click Me</Button>
-  };
+  getTooltipTarget() {
+    switch (this.props.type) {
+      case 'tooltip':
+        return (
+          <div>Hover me to see the tooltip</div>
+        );
+      case 'popover':
+        return (
+          <Button type="button">Click Me</Button>
+        );
+      case 'popoverMenu':
+        return (
+          <Button
+            type="button"
+            height="medium"
+            theme="icon-greybackground"
+            >
+            <Dots size="12px"/>
+          </Button>
+        );
+      default:
+    }
+  }
 
   render() {
     return this.getComponent();
