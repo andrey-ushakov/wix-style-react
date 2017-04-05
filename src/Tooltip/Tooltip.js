@@ -105,7 +105,8 @@ class Tooltip extends WixComponent {
           style={{zIndex: this.props.zIndex}}
           arrowStyle={this.state.arrowStyle}
           maxWidth={this.props.maxWidth}
-          size={this.props.size}>
+          size={this.props.size}
+          >
           {this.props.content}
         </TooltipContent>);
 
