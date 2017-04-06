@@ -17,6 +17,8 @@ class Tooltip extends WixComponent {
   onClickOutside() {
     if (this.props.shouldCloseOnClickOutside) {
       this.hide();
+    } else if (this.props.onClickOutside) {
+      this.props.onClickOutside && this.props.onClickOutside(e);
     }
   }
 
@@ -34,6 +36,7 @@ class Tooltip extends WixComponent {
     bounce: PropTypes.bool,
     disabled: PropTypes.bool,
     maxWidth: PropTypes.string,
+    onClickOutside: PropTypes.func,
     zIndex: React.PropTypes.number,
 
     /**
@@ -72,6 +75,7 @@ class Tooltip extends WixComponent {
     hideDelay: 500,
     zIndex: 2000,
     maxWidth: '1200px',
+    onClickOutside: null,
     active: false,
     theme: 'light',
     disabled: false,
