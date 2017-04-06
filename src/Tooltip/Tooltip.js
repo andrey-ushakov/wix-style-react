@@ -14,7 +14,7 @@ class Tooltip extends WixComponent {
     return this._mountNode ? elements.concat(this._mountNode) : elements;
   }
 
-  onClickOutside() {
+  onClickOutside(e) {
     if (this.props.shouldCloseOnClickOutside) {
       this.hide();
     } else if (this.props.onClickOutside) {
