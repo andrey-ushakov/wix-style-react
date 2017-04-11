@@ -64,7 +64,7 @@ class ExampleTooltip extends Component {
           <div className={`${styles[this.state.theme]} ${styles.exampleWrapper}`}>
             <Template
               theme={this.state.type === 'default' ? 'dark' : 'light'}
-              text={this.state.text}
+              tooltipContent={this.state.text}
     					type="tooltip"
               onChange={this.props.onChange}
               size={this.state.size}

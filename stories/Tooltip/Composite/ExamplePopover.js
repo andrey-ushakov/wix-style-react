@@ -52,7 +52,7 @@ class ExamplePopover extends Component {
             <Template
               theme="light"
               placement={this.state.placement}
-              text={this.state.text}
+              tooltipContent={this.state.text}
               showTrigger="click"
               hideTrigger="click"
               type="popover"

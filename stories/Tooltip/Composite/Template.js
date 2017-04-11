@@ -10,7 +10,7 @@ export class Template extends Component {
     onChange: PropTypes.func.isRequired,
     theme: Tooltip.propTypes.theme,
     placement: Tooltip.propTypes.placement,
-    text: Tooltip.propTypes.content,
+    tooltipContent: Tooltip.propTypes.content,
     showTrigger: Tooltip.propTypes.showTrigger,
     hideTrigger: Tooltip.propTypes.hideTrigger,
     type: PropTypes.oneOf(['tooltip', 'popover', 'popoverMenu']),
@@ -28,10 +28,9 @@ export class Template extends Component {
   getComponent() {
     return (
       <Tooltip
-        debug
         placement={this.props.placement}
         alignment="center"
-        content={this.props.text}
+        content={this.props.tooltipContent}
         showTrigger={this.props.showTrigger}
         hideTrigger={this.props.hideTrigger}
         theme={this.props.theme}

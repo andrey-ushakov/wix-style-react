@@ -37,7 +37,7 @@ class Tooltip extends WixComponent {
     disabled: PropTypes.bool,
     maxWidth: PropTypes.string,
     onClickOutside: PropTypes.func,
-    zIndex: React.PropTypes.number,
+    zIndex: PropTypes.number,
 
     /**
      * By default tooltip is appended to a body, to avoid CSS collisions.
@@ -62,8 +62,7 @@ class Tooltip extends WixComponent {
      */
     moveArrowTo: PropTypes.number,
     size: PropTypes.oneOf(['normal', 'large']),
-    shouldCloseOnClickOutside: PropTypes.bool,
-    debug: PropTypes.bool
+    shouldCloseOnClickOutside: PropTypes.bool
   };
 
   static defaultProps = {
@@ -81,8 +80,7 @@ class Tooltip extends WixComponent {
     disabled: false,
     children: null,
     size: 'normal',
-    shouldCloseOnClickOutside: false,
-    debug: false
+    shouldCloseOnClickOutside: false
   };
 
   _childNode = null;
@@ -126,20 +124,26 @@ class Tooltip extends WixComponent {
 
   componentWillMount() {
     super.componentWillMount && super.componentWillMount();
-    if (this.props.debug || this.state.visible) {
+    if (this.props.active) {
       this.show();
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   super.componentWillReceiveProps && super.componentWillReceiveProps(nextProps);
-  //   if (this.state.visible && this.props.hideTrigger === 'custom') {
-  //     this.hide();
-  //   }
-  //   if (!this.state.visible && this.props.showTrigger === 'custom') {
-  //     this.show();
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    super.componentWillReceiveProps && super.componentWillReceiveProps(nextProps);
+    if (nextProps.active !== this.props.active) {
+      if (this.state.visible && this.props.hideTrigger === 'custom') {
+        if (!nextProps.active) {
+          this.hide();
+        }
+      }
+      if (!this.state.visible && this.props.showTrigger === 'custom') {
+        if (nextProps.active) {
+          this.show();
+        }
+      }
+    }
+  }
 
   render() {
     const child = this.props.children;
@@ -213,10 +217,6 @@ class Tooltip extends WixComponent {
   }
 
   hide() {
-    if (this.props.debug) {
-      return;
-    }
-
     if (this._showTimeout) {
       clearTimeout(this._showTimeout);
       this._showTimeout = null;
@@ -351,15 +351,6 @@ class Tooltip extends WixComponent {
   isShown() {
     return this.state.visible;
   }
-
-  willBeShown() {
-    return !!this._showTimeout;
-  }
-
-  willBeHidden() {
-    return !!this._hideTimeout;
-  }
-
 }
 
 export default Tooltip;

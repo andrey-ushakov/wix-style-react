@@ -10,6 +10,7 @@ class IconChooser extends Component {
     });
     return (
       <Dropdown
+        selectedId={this.props.selectedId}
         options={options}
         onSelect={this.props.onSelect}
         placeholder={'Choose an icon'}
