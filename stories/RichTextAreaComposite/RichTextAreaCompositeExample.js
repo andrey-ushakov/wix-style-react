@@ -31,8 +31,8 @@ class RichTextAreaCompositeExample extends Component {
         callback(src);
       },
       disabled: false,
-      required: false
-    }
+    },
+    required: false
   };
 
   setComponentState(componentName, obj) {
@@ -79,8 +79,8 @@ class RichTextAreaCompositeExample extends Component {
             <Label>Required: </Label>
             <ToggleSwitch
               size="small"
-              checked={this.state.richTextArea.required}
-              onChange={() => this.setComponentState('richTextArea', {required: !this.state.richTextArea.required})}
+              checked={this.state.required}
+              onChange={() => this.setState({required: !this.state.required})}
               />
           </div>
           <div className={styles.option}>

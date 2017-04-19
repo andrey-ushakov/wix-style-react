@@ -11,6 +11,7 @@ export default class Form extends Component {
     label: PropTypes.object,
     richTextArea: PropTypes.object,
     onChange: PropTypes.func,
+    required: PropTypes.bool
   };
 
   componentDidUpdate(props) {
@@ -23,7 +24,7 @@ export default class Form extends Component {
 
   getComponent() {
     return (
-      <RichTextAreaComposite required={this.props.richTextArea.required}>
+      <RichTextAreaComposite required={this.props.required}>
         {this.props.withLabel ? <Label {...this.props.label}/> : null}
         <RichTextArea {...this.props.richTextArea}/>
       </RichTextAreaComposite>
