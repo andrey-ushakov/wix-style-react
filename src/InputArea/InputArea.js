@@ -69,6 +69,7 @@ class InputArea extends WixComponent {
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.resizable]: !!resizable,
+      [styles.counter]: !!hasCounter,
       [styles.nonResizable]: !resizable
     });
 
@@ -176,9 +177,9 @@ InputArea.propTypes = {
   iconLeft: PropTypes.object,
   readOnly: PropTypes.bool,
   rows: PropTypes.number,
-  counter: PropTypes.number,
   minHeight: PropTypes.string,
   maxHeight: PropTypes.string,
+  maxLength: PropTypes.number,
   resizable: PropTypes.bool,
   hasCounter: PropTypes.bool,
   errorMessage: PropTypes.string
