@@ -7,25 +7,23 @@ class FilePicker extends WixComponent {
   constructor(props) {
     super(props);
     this.state = {
-      hasFile: false,
       selectedFileName: props.subLabel
     };
   }
 
   onChooseFile(file) {
-    if (file) {
-      const {onChange} = this.props;
-      onChange(file);
+    const {maxSize, onChange} = this.props;
 
-      this.setState({
-        hasFile: true,
-        selectedFileName: file.name
-      });
+    if (file) {
+      onChange(file);
+      if (file.size <= maxSize) {
+        this.setState({selectedFileName: file.name});
+      }
     }
   }
 
   render() {
-    const {header, mainLabel} = this.props;
+    const {header, mainLabel, supportedFormats, error, errorMessage} = this.props;
 
     return (
       <div>
@@ -33,10 +31,11 @@ class FilePicker extends WixComponent {
         <label className={styles.label}>
           <div className={styles.icon}><Add width="42" height="42"/></div>
           <div>
-            <span className={styles.cta}>{mainLabel}</span>
-            <span className={styles.info}>{this.state.selectedFileName}</span>
+            <span className={styles.cta} data-hook="main-label">{mainLabel}</span>
+            <span className={styles.info} data-hook="sub-label">{this.state.selectedFileName}</span>
+            {error && <span data-hook="filePicker-error" className={styles.error}>{errorMessage}</span>}
           </div>
-          <input className={styles.input} type="file" onChange={e => this.onChooseFile(e.target.files[0])}/>
+          <input className={styles.input} type="file" accept={supportedFormats} onChange={e => this.onChooseFile(e.target.files[0])}/>
         </label>
       </div>
     );
@@ -46,14 +45,21 @@ class FilePicker extends WixComponent {
 FilePicker.defaultProps = {
   mainLabel: 'Choose File',
   subLabel: 'No file chosen (Max size 5 MB)',
-  onChange: () => {}
+  onChange: () => {},
+  supportedFormats: '*',
+  errorMessage: '',
+  maxSize: 5000000  //5MB
 };
 
 FilePicker.propTypes = {
   header: PropTypes.string,
   onChange: PropTypes.func,
   mainLabel: PropTypes.string,
-  subLabel: PropTypes.string
+  subLabel: PropTypes.string,
+  supportedFormats: PropTypes.string,
+  maxSize: PropTypes.number,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string
 };
 
 export default FilePicker;

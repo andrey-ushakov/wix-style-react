@@ -1,10 +1,22 @@
 import React from 'react';
+import {any, func, node, string} from 'prop-types';
 import styles from './Button.scss';
 import WixComponent from '../WixComponent';
 import ButtonLayout from '../ButtonLayout/ButtonLayout';
 import omit from 'lodash.omit';
 
 class Button extends WixComponent {
+  static propTypes = {
+    ...ButtonLayout.propTypes,
+    children: any,
+    id: string,
+    prefixIcon: node,
+    suffixIcon: node,
+    type: string,
+    onClick: func,
+  }
+
+  static defaultProps = ButtonLayout.defaultProps
 
   constructor(props) {
     super(props);
@@ -15,9 +27,10 @@ class Button extends WixComponent {
 
   addIcon(className, icon, height) {
     const iconSize = height === 'small' ? '8px' : height === 'medium' ? '12px' : '16px';
+    const dataHook = className === styles.prefix ? 'btn-prefix' : 'btn-suffix';
     return (
       icon ?
-        <div className={className}>
+        <div className={className} data-hook={dataHook}>
           {React.cloneElement(icon, {size: iconSize})}
         </div> :
         null
@@ -47,20 +60,6 @@ class Button extends WixComponent {
     );
   }
 }
-
-Button.defaultProps = ButtonLayout.defaultProps;
-
-Button.propTypes = Object.assign({},
-  ButtonLayout.propTypes,
-  {
-    id: React.PropTypes.string,
-    onClick: React.PropTypes.func,
-    children: React.PropTypes.any,
-    prefixIcon: React.PropTypes.node,
-    suffixIcon: React.PropTypes.node,
-    type: React.PropTypes.string
-  }
-);
 
 Button.displayName = 'Button';
 

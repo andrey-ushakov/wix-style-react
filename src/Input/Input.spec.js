@@ -1,15 +1,36 @@
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
 import inputDriverFactory from './Input.driver';
-import Input from './Input';
+import Input from '.';
 import sinon from 'sinon';
 import {createDriverFactory} from '../test-common';
-import {inputTestkitFactory} from '../../testkit';
+import {inputTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 
 describe('Input', () => {
   const createDriver = createDriverFactory(inputDriverFactory);
+
+  describe('test tooltip', () => {
+    it('should get the tooltip for further tests', () => {
+      const driver = createDriver(<Input error errorMessage="I'm the error message"/>);
+      const dataHook = driver.getTooltipDataHook();
+      const wrapper = driver.getTooltipElement();
+      const tooltipDriver = tooltipTestkitFactory({wrapper, dataHook});
+      tooltipDriver.mouseEnter();
+
+      const resolveIn = timeout =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve({});
+          }, timeout);
+        });
+
+      return resolveIn(500).then(() => {
+        expect(tooltipDriver.getContent()).toBe('I\'m the error message');
+      });
+    });
+  });
 
   describe('value attribute', () => {
     it('should pass down to the wrapped input', () => {
@@ -53,6 +74,18 @@ describe('Input', () => {
     });
   });
 
+  describe('textOverflow attribute', () => {
+    it('should pass down to the wrapped input', () => {
+      const driver = createDriver(<Input textOverflow="ellipsis"/>);
+      expect(driver.getTextOverflow()).toBe('ellipsis');
+    });
+
+    it('should pass down to the wrapped input with default clip value', () => {
+      const driver = createDriver(<Input/>);
+      expect(driver.getTextOverflow()).toBe('clip');
+    });
+  });
+
   describe('type attribute', () => {
     it('should set the type attribute', () => {
       const driver = createDriver(<Input type="number"/>);
@@ -66,6 +99,14 @@ describe('Input', () => {
 
       expect(driver.hasExclamation()).toBeTruthy();
       expect(driver.hasError()).toBeTruthy();
+    });
+  });
+
+  describe('help attribute', () => {
+    it('should display an help icon if help is true', () => {
+      const driver = createDriver(<Input help/>);
+
+      expect(driver.hasHelp()).toBeTruthy();
     });
   });
 

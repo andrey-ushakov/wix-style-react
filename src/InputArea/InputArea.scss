@@ -18,6 +18,12 @@ $exclamation-top: 4px;
     @include FontRoman();
 }
 
+.errorIcon {
+    padding: 0 7px 16px;
+    color: #f2564d;
+    margin-top: 6px;
+}
+
 .inputArea {
     flex-grow: 1;
     flex-shrink: 1;
@@ -83,6 +89,15 @@ $exclamation-top: 4px;
         @include ThemeDefault($color: white, $borderColor: #c1e4fe, $backgroundColor: rgba(22,45,61,0.6));
         @include ThemeHover($backgroundColor: rgba(22,45,61,0.4));
         @include ThemeFocus($borderColor: #4eb7f5, $boxShadow: inset 0 0 5px 0 rgba(56,153,236,0.6));
+        @include ThemeError($borderColor: $paletteR1, $boxShadow: inset 0px 0px 5px 0px fade($R10, 60%));
+    }
+    &-amaterial {
+        .inputArea {
+            @include FontLight();
+            @include Placeholder($GR60);
+        }
+        border-radius: 0;
+        @include ThemeDefault($color: $D10, $borderColor: #e0e3e5, $backgroundColor: $D80);
         @include ThemeError($borderColor: $paletteR1, $boxShadow: inset 0px 0px 5px 0px fade($R10, 60%));
     }
     &-material {

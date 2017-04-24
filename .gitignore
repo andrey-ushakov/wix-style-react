@@ -8,9 +8,10 @@ target
 coverage
 .history
 storybook-static
+storybook-e2e
 /.idea/
 *.iml
 .vscode
-test/e2e/screenshots
+test/e2e
 src/Icons/components/*.js
 src/Icons/index.js

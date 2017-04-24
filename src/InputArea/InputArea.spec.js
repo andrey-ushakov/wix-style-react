@@ -96,7 +96,6 @@ describe('InputArea', () => {
     it('should display an error icon if error is true', () => {
       const driver = createDriver(<InputArea error/>);
 
-      expect(driver.hasExclamation()).toBeTruthy();
       expect(driver.hasError()).toBeTruthy();
     });
   });
@@ -160,6 +159,19 @@ describe('InputArea', () => {
       driver.trigger('keyDown', event);
 
       expect(onKeyDown).toBeCalled();
+    });
+  });
+
+  describe('onEnter attribute', () => {
+    it('should be called when text is entered to the wrapped input', () => {
+      const onEnterPressed = jest.fn();
+      const event = {key: 'Enter', keyCode: 13, which: 13};
+
+      const driver = createDriver(<InputArea onEnterPressed={onEnterPressed}/>);
+
+      driver.trigger('keyDown', event);
+
+      expect(onEnterPressed).toBeCalled();
     });
   });
 

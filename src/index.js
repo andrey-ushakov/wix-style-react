@@ -1,4 +1,4 @@
-import {MessageBoxLayout1, MessageBoxLayout2, HeaderLayout1, FooterLayout1} from './MessageBox';
+import {MessageBoxMarketerialLayout, MessageBoxFunctionalLayout, HeaderLayout, FooterLayout} from './MessageBox';
 
 export {default as Button} from './Button';
 export {default as ButtonLayout} from './ButtonLayout';
@@ -8,7 +8,12 @@ export {default as InputWithOptions} from './InputWithOptions';
 export {default as Checkbox} from './Checkbox';
 export {default as ToggleSwitch} from './ToggleSwitch';
 export {default as Modal} from './Modal';
-export {MessageBoxLayout1, MessageBoxLayout2, HeaderLayout1, FooterLayout1};
+export {
+    MessageBoxMarketerialLayout, MessageBoxMarketerialLayout as MessageBoxLayout1,
+    MessageBoxFunctionalLayout, MessageBoxFunctionalLayout as MessageBoxLayout2,
+    HeaderLayout, HeaderLayout as HeaderLayout1,
+    FooterLayout, FooterLayout as FooterLayout1
+};
 export {default as RadioGroup} from './RadioGroup';
 export {default as Slider} from './Slider';
 export {default as GoogleAddressInput} from './GoogleAddressInput';
@@ -26,9 +31,13 @@ export {default as Dropdown} from './Dropdown';
 export {default as Autocomplete} from './AutoComplete';
 export {default as Label} from './Label';
 export {default as DataTable} from './DataTable';
+export {default as Text} from './Text';
 export {default as TextArea} from './TextArea';
 export {default as Range} from './Range';
 export {default as TextField} from './TextField';
 export {default as EndorseContentLayout} from './EndorseContentLayout';
 export {default as Notification} from './Notification';
 export {default as Breadcrumbs} from './Breadcrumbs';
+export {default as ImageViewer} from './ImageViewer';
+export {default as PopoverMenu} from './PopoverMenu';
+export {default as PopoverMenuItem} from './PopoverMenuItem';

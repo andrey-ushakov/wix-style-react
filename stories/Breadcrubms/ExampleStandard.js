@@ -9,10 +9,12 @@ export default () =>
   <div>
     <div className={`${styles.onGrayBackground} ${styles.exampleWrapper}`}>Without links
       <Breadcrumbs
+        dataHook="story-breadcrumbs-no-links"
         items={items}/>
     </div>
     <div className={`${styles.onGrayBackground} ${styles.exampleWrapper}`}>With links
       <Breadcrumbs
+        dataHook="story-breadcrumbs-with-links"
         items={itemsWithLinks}/>
     </div>
     <div className={`${styles.onGrayBackground} ${styles.exampleWrapper} rtl`}>RTL

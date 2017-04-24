@@ -9,6 +9,8 @@ export default class Markdown extends Component {
   };
 
   render() {
+    const shouldHideForE2E = process.env.STORYBOOK_E2E;
+
     const options = {
       linkTarget: '_parent',
       highlight(code, lang) {
@@ -16,10 +18,8 @@ export default class Markdown extends Component {
       }
     };
 
-    return (
-      <div className="markdown-body">
-        <Remarkable source={this.props.source} options={options}/>
-      </div>
-    );
+    return !shouldHideForE2E ? (<div className="markdown-body">
+      <Remarkable source={this.props.source} options={options}/>
+    </div>) : null;
   }
 }

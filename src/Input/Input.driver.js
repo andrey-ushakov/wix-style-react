@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom';
 import styles from './Input.scss';
 
 const inputDriverFactory = ({element, wrapper, component}) => {
-  const input = element.querySelector('input');
-  const clearButton = element.querySelector(`.${styles.clearButton}`);
+  const input = element && element.querySelector('input');
+  const clearButton = element && element.querySelector(`.${styles.clearButton}`);
 
   return {
     trigger: (trigger, event) => ReactTestUtils.Simulate[trigger](input, event),
     focus: () => input.focus(),
+    blur: () => ReactTestUtils.Simulate.blur(input),
     clickClear: () => ReactTestUtils.Simulate.click(clearButton),
     enterText: text => ReactTestUtils.Simulate.change(input, {target: {value: text}}),
     getValue: () => input.value,
@@ -17,6 +18,7 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     getDefaultValue: () => input.defaultValue,
     getTabIndex: () => input.tabIndex,
     getReadOnly: () => input.readOnly,
+    getTextOverflow: () => input.style['text-overflow'],
     getType: () => input.type,
     hasPrefix: () => element.querySelectorAll(`.${styles.prefix}`).length === 1,
     hasPrefixClass: () => element.querySelectorAll(`.${styles.input}.${styles.withPrefix}`).length === 1,
@@ -26,7 +28,10 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     prefixComponentExists: style => !!element.querySelector(`.${styles.prefix} ${style}`),
     suffixComponentExists: style => !!element.querySelector(`.${styles.suffix} ${style}`),
     hasExclamation: () => !!element.querySelector(`.${styles.exclamation}`),
+    hasHelp: () => !!element.querySelector(`.${styles.help}`),
     hasError: () => element.classList.contains(styles.hasError),
+    getTooltipElement: () => element,
+    getTooltipDataHook: () => 'input-tooltip',
     getUnit: () => element.querySelector(`.${styles.unit}`).textContent,
     hasMagnifyingGlass: () => !!element.querySelector(`.${styles.magnifyingGlass}`),
     hasMenuArrow: () => !!element.querySelector(`.${styles.menuArrow}`),
@@ -38,7 +43,7 @@ const inputDriverFactory = ({element, wrapper, component}) => {
     isOfStyle: style => element.classList.contains(styles[`theme-${style}`]),
     isOfSize: size => element.classList.contains(styles[`size-${size}`]),
     isFocus: () => document.activeElement === input,
-    exists: () => !!element.querySelector('input'),
+    exists: () => !!(element && element.querySelector('input')),
     hasIconLeft: () => !!element.querySelectorAll(`.${styles.prefix}`),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));

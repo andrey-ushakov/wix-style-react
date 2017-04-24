@@ -1,8 +1,9 @@
-import _ from 'lodash/fp';
-
 const buttonDriverFactory = component => ({
   click: () => component.click(),
-  getButtonText: () => component.getText(),
+  getButtonTextContent: () => component.getText(),
+  isButtonDisabled: () => !!component.getAttribute('disabled'),
+  isPrefixIconExists: () => component.$('[data-hook="btn-prefix"]').isPresent(),
+  isSuffixIconExists: () => component.$('[data-hook="btn-suffix"]').isPresent(),
   element: () => component
 });
 

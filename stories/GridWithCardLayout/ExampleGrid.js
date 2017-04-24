@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Card} from '../../src/Grid'
+import {Container, Row, AutoAdjustedRow, Col, Card} from '../../src/Grid'
 import styles from './ExampleGrid.scss'
 
 import TextField from '../../src/TextField';
@@ -27,6 +27,51 @@ function renderStandardInput() {
 export default () =>
   <div data-hook="card-example" className={styles.exampleContainer}>
     <Container>
+      <AutoAdjustedRow>
+        <Card stretchVertically={true}>
+          <Card.ButtonHeader
+            tooltip={<Tooltip placement="top" alignment="center" content="Hi there!"/>}
+            title="AutoAdjustedRow Stretched Card 1"
+            buttonOnClick={() => {alert('Clicked!')}}
+            buttonPrefix={<Plus/>}
+            buttonTitle='Tooltip button!'
+          />
+          <Card.Content>Here comes some AMAZING content that will blow your mind.
+            Or just show you that the card next to me got my height.</Card.Content>
+        </Card>
+        <Card stretchVertically={true}>
+          <Card.ButtonHeader
+            tooltip={<Tooltip placement="top" alignment="center" content="Hi there!"/>}
+            title="AutoAdjustedRow Stretched Card 2"
+            buttonOnClick={() => {alert('Clicked!')}}
+            buttonPrefix={<Plus/>}
+            buttonTitle='Tooltip button!'
+          />
+        </Card>
+      </AutoAdjustedRow>
+      <AutoAdjustedRow>
+        <Card>
+          <Card.Header
+            title="AutoAdjustedRow Card 1"
+          />
+        </Card>
+        <Card>
+          <Card.Header
+            title="GridRow Card 2"
+          />
+        </Card>
+        <Card>
+          <Card.Header
+            title="AutoAdjustedRow Card 3"
+          />
+        </Card>
+        <Card>
+          <Card.Header
+            title="AutoAdjustedRow Card 4"
+          />
+        </Card>
+
+      </AutoAdjustedRow>
       <Row>
         <Col span={8}>
           <Card>
@@ -280,5 +325,23 @@ export default () =>
           </Card>
         </Col>
       </Row>
+      <Card>
+          <Card.Header title='Grid Row - RTL support'>
+              Row RTL support
+          </Card.Header>
+          <Card.Content>
+              <Row rtl>
+                  <Col span={4}>
+                      אחת
+                  </Col>
+                  <Col span={4}>
+                      שתיים
+                  </Col>
+                  <Col span={4}>
+                      שלוש
+                  </Col>
+              </Row>
+          </Card.Content>
+      </Card>
     </Container>
   </div>;

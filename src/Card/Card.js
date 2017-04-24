@@ -1,19 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {bool, node} from 'prop-types';
+import classNames from 'classnames';
+import WixComponent from '../WixComponent';
 import styles from './Card.scss';
 import Content from './Content';
 import Header from './Header';
 import LinkHeader from './LinkHeader';
 import ButtonHeader from './ButtonHeader';
-
-class Card extends Component {
+class Card extends WixComponent {
 
   static propTypes = {
-    children: React.PropTypes.node
+    children: node,
+    stretchVertically: bool
+  };
+  static defaultProps = {
+    stretchVertically: false
   };
 
   render() {
+    const cssClasses = classNames({
+      [styles.card]: true,
+      [styles.stretchVertically]: this.props.stretchVertically
+    });
     return (
-      <div className={styles.card}>
+      <div className={cssClasses}>
         {this.props.children}
       </div>
     );
