@@ -50,6 +50,15 @@ describe('InputArea', () => {
     });
   });
 
+  describe('maxLength attribute', () => {
+    it('should pass down to the wrapped input - with max length', () => {
+      const maxLength = '5';
+
+      const driver = createDriver(<InputArea maxLength={maxLength}/>);
+      expect(driver.getStyle().maxLength).toEqual(maxLength);
+    });
+  });
+
   describe('resizable attribute', () => {
     it('should pass down to the wrapped input', () => {
       const driver = createDriver(<InputArea resizable/>);

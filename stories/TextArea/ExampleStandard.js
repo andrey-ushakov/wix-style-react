@@ -26,7 +26,8 @@ class ExampleStandard extends Component {
     },
     inputArea: {
       placeholder: 'Please type in your first name...',
-      resizable: false
+      resizable: false,
+      hasCounter: false
     },
     required: false
   };
@@ -101,6 +102,23 @@ class ExampleStandard extends Component {
                 value={this.state.inputArea.maxHeight}
                 onChange={e => this.setComponentState('inputArea', {maxHeight: e.target.value})}
                 />
+
+              <Input
+                placeholder="Set max length" size="small" type="number"
+                value={this.state.inputArea.maxLength}
+                onChange={e => this.setComponentState('inputArea', {maxLength: e.target.value})}
+              />
+              <div className={styles.option}>
+                <div className={styles.flex}>
+                  <div className={styles.paddRight}><Label>Show Counter:</Label></div>
+                  <ToggleSwitch
+                    size="small"
+                    checked={this.state.inputArea.hasCounter}
+                    onChange={() => this.setComponentState('inputArea', {hasCounter: !this.state.inputArea.hasCounter})}
+                  />
+                </div>
+              </div>
+
               <div className={styles.option}>
                 <Label>Resizable: </Label>
                 <ToggleSwitch

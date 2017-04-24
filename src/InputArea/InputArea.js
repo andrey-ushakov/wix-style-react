@@ -10,6 +10,7 @@ class InputArea extends WixComponent {
   constructor(props) {
     super(props);
     this._onKeyDown = this._onKeyDown.bind(this);
+    this._onChange = this._onChange.bind(this);
     this._onFocus = this._onFocus.bind(this);
     this._onBlur = this._onBlur.bind(this);
     this.focus = this.focus.bind(this);
@@ -18,7 +19,8 @@ class InputArea extends WixComponent {
   }
 
   state = {
-    focus: false
+    focus: false,
+    counter: 0
   };
 
   componentDidMount() {
@@ -43,7 +45,9 @@ class InputArea extends WixComponent {
       value,
       minHeight,
       maxHeight,
+      maxLength,
       resizable,
+      hasCounter,
       theme,
       errorMessage
     } = this.props;
@@ -71,17 +75,17 @@ class InputArea extends WixComponent {
     return (
       <div className={classes}>
         <textarea
-          rows={rows}
+          rows={rows} maxLength = {maxLength}
           ref={ref => this.textArea = ref}
           className={styles.inputArea}
           id={id}
           style={inlineStyle}
           defaultValue={defaultValue}
           value={value}
-          onChange={onChange}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
           onKeyDown={this._onKeyDown}
+          onChange={this._onChange}
           onDoubleClick={this._onDoubleClick}
           placeholder={placeholder}
           tabIndex={tabIndex}
@@ -91,6 +95,7 @@ class InputArea extends WixComponent {
           />
         {error && <Exclamation errorMessage={errorMessage}/>}
         {theme === 'material' && <div className={styles.bar}/>}
+        {hasCounter && maxLength && <span className={styles.counter}>{this.state.counter}/{maxLength}</span>}
       </div>
     );
   }
@@ -133,6 +138,11 @@ class InputArea extends WixComponent {
       this.props.onEscapePressed && this.props.onEscapePressed();
     }
   }
+
+  _onChange(e) {
+    this.props.hasCounter && this.setState({counter: e.target.value.length});
+    this.props.onChange(e);
+  }
 }
 
 InputArea.displayName = 'InputArea';
@@ -166,9 +176,11 @@ InputArea.propTypes = {
   iconLeft: PropTypes.object,
   readOnly: PropTypes.bool,
   rows: PropTypes.number,
+  counter: PropTypes.number,
   minHeight: PropTypes.string,
   maxHeight: PropTypes.string,
   resizable: PropTypes.bool,
+  hasCounter: PropTypes.bool,
   errorMessage: PropTypes.string
 };
 
