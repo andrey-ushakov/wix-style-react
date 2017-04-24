@@ -25,6 +25,7 @@ class ExampleStandard extends Component {
       children: 'First name'
     },
     inputArea: {
+      value: '',
       placeholder: 'Please type in your first name...',
       resizable: false,
       hasCounter: false
@@ -115,7 +116,7 @@ class ExampleStandard extends Component {
                     size="small"
                     checked={this.state.inputArea.hasCounter}
                     onChange={() => this.setComponentState('inputArea', {hasCounter: !this.state.inputArea.hasCounter})}
-                  />
+                    />
                 </div>
               </div>
 
@@ -131,11 +132,17 @@ class ExampleStandard extends Component {
           </div>
         </div>
         <div className={styles.output}>
-          <TextAreaExample {...this.state} onChange={this.props.onChange}/>
+          <TextAreaExample {...this.state} onChange={() => this._onChange}/>
         </div>
       </from>
     );
   }
+
+  _onChange() {
+    this.setComponentState('inputArea', {value: this.state.inputArea.value });
+    this.props.onChange();
+  }
+
 }
 
 export default ExampleStandard;

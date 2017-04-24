@@ -20,7 +20,7 @@ class InputArea extends WixComponent {
 
   state = {
     focus: false,
-    counter: 0
+    counter: (this.props.value || this.props.defaultValue || '').length
   };
 
   componentDidMount() {
@@ -36,7 +36,6 @@ class InputArea extends WixComponent {
       forceFocus,
       forceHover,
       id,
-      onChange,
       onKeyUp,
       placeholder,
       readOnly,
@@ -69,7 +68,7 @@ class InputArea extends WixComponent {
       [styles.hasHover]: forceHover,
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.resizable]: !!resizable,
-      [styles.counter]: !!hasCounter,
+      [styles.hasCounter]: !!hasCounter,
       [styles.nonResizable]: !resizable
     });
 
