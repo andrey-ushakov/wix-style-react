@@ -23,6 +23,7 @@ class Tooltip extends WixComponent {
   }
 
   static propTypes = {
+    textAlign: PropTypes.string,
     children: PropTypes.node,
     content: PropTypes.node.isRequired,
     placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
@@ -37,6 +38,11 @@ class Tooltip extends WixComponent {
     disabled: PropTypes.bool,
     maxWidth: PropTypes.string,
     onClickOutside: PropTypes.func,
+
+    /**
+     * Callback to be called when the tooltip has been shown
+     */
+    onShow: PropTypes.func,
     zIndex: PropTypes.number,
 
     /**
@@ -75,12 +81,14 @@ class Tooltip extends WixComponent {
     zIndex: 2000,
     maxWidth: '1200px',
     onClickOutside: null,
+    onShow: null,
     active: false,
     theme: 'light',
     disabled: false,
     children: null,
     size: 'normal',
-    shouldCloseOnClickOutside: false
+    shouldCloseOnClickOutside: false,
+    textAlign: 'center'
   };
 
   _childNode = null;
@@ -108,6 +116,7 @@ class Tooltip extends WixComponent {
           arrowStyle={this.state.arrowStyle}
           maxWidth={this.props.maxWidth}
           size={this.props.size}
+          textAlign={this.props.textAlign}
           >
           {this.props.content}
         </TooltipContent>);
@@ -195,6 +204,10 @@ class Tooltip extends WixComponent {
       return;
     }
     this._showTimeout = setTimeout(() => {
+      if (this.props.onShow) {
+        this.props.onShow();
+      }
+
       this.setState({visible: true}, () => {
         if (!this._mountNode) {
           this._mountNode = document.createElement('div');
