@@ -75,7 +75,8 @@ class InputArea extends WixComponent {
     return (
       <div className={classes}>
         <textarea
-          rows={rows} maxLength = {maxLength}
+          rows={rows}
+          maxLength={maxLength}
           ref={ref => this.textArea = ref}
           className={styles.inputArea}
           id={id}
