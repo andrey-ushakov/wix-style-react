@@ -1,5 +1,5 @@
 import React from 'react';
-import {arrayOf, func, oneOf, oneOfType, node, number, shape, string} from 'prop-types';
+import {arrayOf, func, oneOf, oneOfType, node, number, shape, string, any} from 'prop-types';
 import styles from './Breadcrumbs.scss';
 import classNames from 'classnames';
 import Label from '../Label';
@@ -25,7 +25,8 @@ class Breadcrumbs extends WixComponent {
       number
     ]),
     size: oneOf(['medium', 'large']),
-    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground'])
+    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
+    customElement: any
   }
 
   static defaultProps = {
@@ -58,11 +59,13 @@ class Breadcrumbs extends WixComponent {
       return item.value;
     }
 
-    if (!item.link) {
-      return item.value;
-    } else {
+    if (item.customElement) {
+      return item.customElement;
+    } else if (item.link) {
       return <a href={`${item.link}`} style={{color: 'inherit', textDecoration: 'inherit'}}>{item.value}</a>;
     }
+
+    return item.value;
   }
 
   renderItem(item) {
