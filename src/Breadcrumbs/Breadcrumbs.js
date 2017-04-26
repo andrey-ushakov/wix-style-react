@@ -25,7 +25,7 @@ class Breadcrumbs extends WixComponent {
       number
     ]),
     size: oneOf(['medium', 'large']),
-    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
+    theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground'])
   }
 
   static defaultProps = {
@@ -53,7 +53,11 @@ class Breadcrumbs extends WixComponent {
     }
   }
 
-  getValue(item) {
+  getValue(item, isActive) {
+    if (isActive) {
+      return item.value;
+    }
+
     if (!item.link) {
       return item.value;
     } else {
@@ -73,7 +77,7 @@ class Breadcrumbs extends WixComponent {
     return (
       <li key={item.id} onClick={() => this._onClick(item)} className={itemClassName}>
         <div className={styles.label}>
-          <Label appearance={labelAppearance}>{this.getValue(item)}</Label>
+          <Label appearance={labelAppearance}>{this.getValue(item, isActive)}</Label>
         </div>
       </li>
     );

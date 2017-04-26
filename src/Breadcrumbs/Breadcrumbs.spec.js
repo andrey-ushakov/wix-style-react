@@ -121,6 +121,25 @@ describe('Breadcrumbs', () => {
     });
   });
 
+  describe('item with link attribute', () => {
+    const linkItems = [
+      {id: 0, value: 'Option 1', link: '//www.wix.com'},
+      {id: 1, value: 'Option 2', link: '//www.facebook.com'}
+    ];
+
+    it('should be a link if no activeId is given', () => {
+      createComopnent({items: linkItems});
+      expect(driver.isActiveLinkAt(0)).toBe(true);
+      expect(driver.isActiveLinkAt(1)).toBe(true);
+    });
+
+    it('should not be a link if it is the item with activeId', () => {
+      createComopnent({items: linkItems, activeId: 0});
+      expect(driver.isActiveLinkAt(0)).toBe(false);
+      expect(driver.isActiveLinkAt(1)).toBe(true);
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');
